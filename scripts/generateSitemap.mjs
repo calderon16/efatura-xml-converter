@@ -16,7 +16,7 @@ const SEO_SLUGS = [
   'e-fatura-kdv-detay-raporu',
 ];
 
-const BASE_URL = 'https://efatura-xml-to-excel.vercel.app';
+const BASE_URL = 'https://efatura-xml-converter.calderon-hs91.workers.dev';
 const currentDate = new Date().toISOString().slice(0, 10);
 
 const staticRoutes = ['', '/xml-to-excel', '/xml-to-json'];

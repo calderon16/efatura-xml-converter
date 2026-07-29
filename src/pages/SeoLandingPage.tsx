@@ -39,7 +39,10 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
       canonicalEl.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalEl);
     }
-    const currentOrigin = typeof window !== 'undefined' ? window.location.origin : 'https://efatura-xml-to-excel.vercel.app';
+    const currentOrigin =
+      typeof window !== 'undefined'
+        ? window.location.origin
+        : 'https://efatura-xml-converter.calderon-hs91.workers.dev';
     canonicalEl.setAttribute('href', `${currentOrigin}/${pageConfig.slug}`);
   }, [pageConfig]);
 

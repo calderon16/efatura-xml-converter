@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://efatura-xml-to-excel.vercel.app/sitemap.xml
+Sitemap: https://efatura-xml-converter.calderon-hs91.workers.dev/sitemap.xml
