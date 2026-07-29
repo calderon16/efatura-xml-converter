@@ -1,37 +1,41 @@
-import ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
 import type { ParsedResult } from '../types/ubl';
 
 /**
  * Generates an Excel (.xlsx) workbook with 3 tabs and applies visual styling,
  * frozen headers, yellow warnings for calculation mismatches, VKN/TCKN labels, and multi-tax details.
+ * Uses dynamic import('exceljs') to optimize initial page load performance.
  */
 export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
+  // Dynamically import ExcelJS on demand
+  const ExcelJSModule = await import('exceljs');
+  const ExcelJS = ExcelJSModule.default || ExcelJSModule;
+
   const workbook = new ExcelJS.Workbook();
   workbook.creator = 'e-Fatura XML Excel Dönüştürücü';
   workbook.created = new Date();
 
   // Header fill style (Dark Navy Blue)
-  const headerFill: ExcelJS.Fill = {
+  const headerFill: any = {
     type: 'pattern',
     pattern: 'solid',
     fgColor: { argb: '1E3A8A' },
   };
 
-  const headerFont: Partial<ExcelJS.Font> = {
+  const headerFont: any = {
     name: 'Segoe UI',
     size: 11,
     bold: true,
     color: { argb: 'FFFFFF' },
   };
 
-  const warningFill: ExcelJS.Fill = {
+  const warningFill: any = {
     type: 'pattern',
     pattern: 'solid',
     fgColor: { argb: 'FEF08A' }, // Soft yellow accent
   };
 
-  const borderStyle: Partial<ExcelJS.Borders> = {
+  const borderStyle: any = {
     top: { style: 'thin', color: { argb: 'E5E7EB' } },
     bottom: { style: 'thin', color: { argb: 'E5E7EB' } },
     left: { style: 'thin', color: { argb: 'E5E7EB' } },
@@ -66,7 +70,7 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
   // Style Header Row
   const row1 = sheet1.getRow(1);
   row1.height = 28;
-  row1.eachCell((cell) => {
+  row1.eachCell((cell: any) => {
     cell.fill = headerFill;
     cell.font = headerFont;
     cell.alignment = { vertical: 'middle', horizontal: 'center' };
@@ -100,14 +104,14 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
     row.getCell('lineExtensionAmount').numFmt = '#,##0.00';
     row.getCell('taxableAmount').numFmt = '#,##0.00';
 
-    row.eachCell((cell) => {
+    row.eachCell((cell: any) => {
       cell.border = borderStyle;
       cell.alignment = { vertical: 'middle' };
     });
 
     // Mismatch warning styling
     if (item.hasMismatch) {
-      row.eachCell((cell) => {
+      row.eachCell((cell: any) => {
         cell.fill = warningFill;
         cell.font = { color: { argb: '854D0E' }, bold: true };
       });
@@ -140,7 +144,7 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
 
   const row2Header = sheet2.getRow(1);
   row2Header.height = 28;
-  row2Header.eachCell((cell) => {
+  row2Header.eachCell((cell: any) => {
     cell.fill = headerFill;
     cell.font = headerFont;
     cell.alignment = { vertical: 'middle', horizontal: 'center' };
@@ -178,7 +182,7 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
     row.getCell('taxAmount').numFmt = '#,##0.00';
     row.getCell('payableAmount').numFmt = '#,##0.00';
 
-    row.eachCell((cell) => {
+    row.eachCell((cell: any) => {
       cell.border = borderStyle;
       cell.alignment = { vertical: 'middle' };
     });
@@ -198,7 +202,7 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
       payableAmount: totalPayableSum,
     });
     summaryRow.height = 24;
-    summaryRow.eachCell((cell) => {
+    summaryRow.eachCell((cell: any) => {
       cell.font = { bold: true, name: 'Segoe UI' };
       cell.border = {
         top: { style: 'double', color: { argb: '1E3A8A' } },
@@ -227,7 +231,7 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
 
   const row3Header = sheet3.getRow(1);
   row3Header.height = 28;
-  row3Header.eachCell((cell) => {
+  row3Header.eachCell((cell: any) => {
     cell.fill = headerFill;
     cell.font = headerFont;
     cell.alignment = { vertical: 'middle', horizontal: 'center' };
@@ -250,7 +254,7 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
         description: mf.description,
       });
       row.height = 22;
-      row.eachCell((cell) => {
+      row.eachCell((cell: any) => {
         cell.border = borderStyle;
         cell.alignment = { vertical: 'middle' };
       });
@@ -259,9 +263,9 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
 
   // Adjust column widths based on length
   [sheet1, sheet2, sheet3].forEach((sheet) => {
-    sheet.columns.forEach((col) => {
+    sheet.columns.forEach((col: any) => {
       let maxLen = 12;
-      col.eachCell?.({ includeEmpty: false }, (cell) => {
+      col.eachCell?.({ includeEmpty: false }, (cell: any) => {
         const valStr = cell.value ? cell.value.toString() : '';
         if (valStr.length > maxLen) {
           maxLen = valStr.length;

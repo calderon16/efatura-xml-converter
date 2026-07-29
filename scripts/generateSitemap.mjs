@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-// SEO Pages Slugs
+// 10 SEO Landing Pages Slugs
 const SEO_SLUGS = [
   'e-fatura-xml-excel-donusturucu',
   'e-fatura-excele-nasil-aktarilir',
@@ -16,10 +16,25 @@ const SEO_SLUGS = [
   'e-fatura-kdv-detay-raporu',
 ];
 
+// 5 Guide Articles Slugs
+const GUIDE_SLUGS = [
+  'ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi',
+  'e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir',
+  'e-fatura-zorunlulugu-kimleri-kapsiyor-2026-güncel-sinirlar',
+  'muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari',
+  'e-fatura-xml-dosyasi-nasil-okunur-step-by-step',
+];
+
 const BASE_URL = 'https://efatura-xml-converter.calderon-hs91.workers.dev';
 const currentDate = new Date().toISOString().slice(0, 10);
 
-const staticRoutes = ['', '/xml-to-excel', '/xml-to-json'];
+const staticRoutes = [
+  '',
+  '/xml-to-excel',
+  '/xml-to-json',
+  '/e-fatura-xml-dogrulama',
+  '/rehberler',
+];
 
 const allUrls = [
   ...staticRoutes.map((route) => ({
@@ -30,6 +45,11 @@ const allUrls = [
   ...SEO_SLUGS.map((slug) => ({
     loc: `${BASE_URL}/${slug}`,
     priority: '0.8',
+    changefreq: 'weekly',
+  })),
+  ...GUIDE_SLUGS.map((slug) => ({
+    loc: `${BASE_URL}/rehberler/${slug}`,
+    priority: '0.7',
     changefreq: 'weekly',
   })),
 ];

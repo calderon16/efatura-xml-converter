@@ -1,86 +1,104 @@
 import React from 'react';
-import { FileSpreadsheet, Code2, ArrowRight } from 'lucide-react';
+import { FileSpreadsheet, Code2, ShieldCheck, ArrowRight } from 'lucide-react';
 
 interface RelatedToolsProps {
   currentTool: 'excel' | 'json';
   onNavigate: (tool: 'excel' | 'json') => void;
+  onNavigateSlug?: (slug: string) => void;
 }
 
-export const RelatedTools: React.FC<RelatedToolsProps> = ({ currentTool, onNavigate }) => {
+export const RelatedTools: React.FC<RelatedToolsProps> = ({
+  currentTool,
+  onNavigate,
+  onNavigateSlug,
+}) => {
   return (
-    <section className="w-full max-w-5xl mx-auto my-12 px-4">
-      <div className="border-t border-slate-200 pt-8">
-        <h3 className="text-lg font-extrabold text-slate-900 mb-1">
-          İlgili Dönüştürücü Araçları
-        </h3>
-        <p className="text-xs text-slate-500 mb-6 font-medium">
-          İhtiyacınıza uygun diğer çıktı formatlarını keşfedin
-        </p>
+    <section className="w-full max-w-5xl mx-auto my-8 px-4">
+      <div className="bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800">
+        <div className="text-center sm:text-left mb-6">
+          <span className="text-xs font-bold text-blue-400 uppercase tracking-wider">
+            İlgili e-Fatura Araçları
+          </span>
+          <h3 className="text-xl sm:text-2xl font-extrabold text-white mt-1">
+            İhtiyacınıza Uygun e-Fatura Çözümünü Seçin
+          </h3>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Excel Converter Card */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {/* Card 1: Excel Tool */}
           <div
             onClick={() => onNavigate('excel')}
-            className={`cursor-pointer p-5 rounded-2xl border transition-all duration-200 flex items-start justify-between gap-4 group ${
+            className={`p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between group ${
               currentTool === 'excel'
-                ? 'bg-blue-50/50 border-blue-300 ring-2 ring-blue-500/20'
-                : 'bg-white border-slate-200 hover:border-blue-400 hover:shadow-sm'
+                ? 'bg-blue-600/20 border-blue-500 shadow-md'
+                : 'bg-slate-800/60 border-slate-700 hover:border-blue-400 hover:bg-slate-800'
             }`}
           >
-            <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold shrink-0">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-blue-600/30 text-blue-400 flex items-center justify-center mb-3">
                 <FileSpreadsheet className="w-5 h-5" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h4 className="text-sm font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
-                    e-Fatura XML → Excel Dönüştürücü
-                  </h4>
-                  {currentTool === 'excel' && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-700">
-                      Şu An Açık
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                  Muhasebeciler ve finans ekipleri için 3 sekmeli biçimlendirilmiş .xlsx çıktısı.
-                </p>
-              </div>
+              <h4 className="font-bold text-base text-white group-hover:text-blue-300 transition-colors">
+                e-Fatura XML → Excel
+              </h4>
+              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                Muhasebeciler ve finans analistleri için 3 sekmeli Excel (.xlsx) dönüştürücü.
+              </p>
             </div>
-            <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+            <div className="flex items-center gap-1 text-xs font-bold text-blue-400 mt-4 group-hover:translate-x-1 transition-transform">
+              <span>{currentTool === 'excel' ? 'Mevcut Araç' : 'Araca Git'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
           </div>
 
-          {/* JSON Converter Card */}
+          {/* Card 2: JSON Tool */}
           <div
             onClick={() => onNavigate('json')}
-            className={`cursor-pointer p-5 rounded-2xl border transition-all duration-200 flex items-start justify-between gap-4 group ${
+            className={`p-5 rounded-2xl border transition-all cursor-pointer flex flex-col justify-between group ${
               currentTool === 'json'
-                ? 'bg-blue-50/50 border-blue-300 ring-2 ring-blue-500/20'
-                : 'bg-white border-slate-200 hover:border-blue-400 hover:shadow-sm'
+                ? 'bg-blue-600/20 border-blue-500 shadow-md'
+                : 'bg-slate-800/60 border-slate-700 hover:border-blue-400 hover:bg-slate-800'
             }`}
           >
-            <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center font-bold shrink-0">
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-indigo-600/30 text-indigo-400 flex items-center justify-center mb-3">
                 <Code2 className="w-5 h-5" />
               </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h4 className="text-sm font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
-                    e-Fatura XML → JSON Dönüştürücü
-                  </h4>
-                  {currentTool === 'json' && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-700">
-                      Şu An Açık
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                  Yazılımcılar ve Zapier/Make otomasyon entegrasyonları için yapısal & düz JSON çıktısı.
-                </p>
-              </div>
+              <h4 className="font-bold text-base text-white group-hover:text-indigo-300 transition-colors">
+                e-Fatura XML → JSON
+              </h4>
+              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                Geliştiriciler ve Zapier/Make otomasyonları için Nested veya Flat JSON çıktısı.
+              </p>
             </div>
-            <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all shrink-0 mt-1" />
+            <div className="flex items-center gap-1 text-xs font-bold text-indigo-400 mt-4 group-hover:translate-x-1 transition-transform">
+              <span>{currentTool === 'json' ? 'Mevcut Araç' : 'Araca Git'}</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
           </div>
+
+          {/* Card 3: Validator Tool */}
+          <div
+            onClick={() => onNavigateSlug?.('e-fatura-xml-dogrulama')}
+            className="p-5 rounded-2xl bg-slate-800/60 border border-slate-700 hover:border-emerald-400 hover:bg-slate-800 transition-all cursor-pointer flex flex-col justify-between group"
+          >
+            <div>
+              <div className="w-10 h-10 rounded-xl bg-emerald-600/30 text-emerald-400 flex items-center justify-center mb-3">
+                <ShieldCheck className="w-5 h-5" />
+              </div>
+              <h4 className="font-bold text-base text-white group-hover:text-emerald-300 transition-colors">
+                e-Fatura XML Doğrulayıcı
+              </h4>
+              <p className="text-xs text-slate-300 mt-2 leading-relaxed">
+                UBL-TR 2.1 şema, zorunlu alan ve Miktar × Fiyat hesaplama denetimi.
+              </p>
+            </div>
+            <div className="flex items-center gap-1 text-xs font-bold text-emerald-400 mt-4 group-hover:translate-x-1 transition-transform">
+              <span>Doğrulayıcıyı Aç</span>
+              <ArrowRight className="w-4 h-4" />
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
