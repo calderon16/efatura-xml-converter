@@ -33,6 +33,7 @@ export const GuideDetailPage: React.FC<GuideDetailPageProps> = ({
   useEffect(() => {
     document.title = guide.title;
 
+    // Update Meta Description
     let metaDescEl = document.querySelector('meta[name="description"]');
     if (!metaDescEl) {
       metaDescEl = document.createElement('meta');
@@ -41,6 +42,25 @@ export const GuideDetailPage: React.FC<GuideDetailPageProps> = ({
     }
     metaDescEl.setAttribute('content', guide.metaDescription);
 
+    // Update OpenGraph Title
+    let ogTitleEl = document.querySelector('meta[property="og:title"]');
+    if (!ogTitleEl) {
+      ogTitleEl = document.createElement('meta');
+      ogTitleEl.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitleEl);
+    }
+    ogTitleEl.setAttribute('content', guide.title);
+
+    // Update OpenGraph Description
+    let ogDescEl = document.querySelector('meta[property="og:description"]');
+    if (!ogDescEl) {
+      ogDescEl = document.createElement('meta');
+      ogDescEl.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDescEl);
+    }
+    ogDescEl.setAttribute('content', guide.metaDescription);
+
+    // Update Canonical Link
     let canonicalEl = document.querySelector('link[rel="canonical"]');
     if (!canonicalEl) {
       canonicalEl = document.createElement('link');
