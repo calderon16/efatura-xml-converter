@@ -1,8 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { SEO_PAGES } from '../src/data/seoPages.ts';
-import { GUIDES } from '../src/data/guides.ts';
+import { SEO_PAGES } from '../src/data/seoPages';
+import { GUIDES } from '../src/data/guides';
 
 const BASE_URL = 'https://efatura-xml-converter.calderon-hs91.workers.dev';
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +17,15 @@ if (!fs.existsSync(templatePath)) {
 
 const templateHtml = fs.readFileSync(templatePath, 'utf-8');
 
-const routesToPrerender = [
+interface RouteMeta {
+  routePath: string;
+  title: string;
+  metaDescription: string;
+  canonicalUrl: string;
+  jsonLd?: object;
+}
+
+const routesToPrerender: RouteMeta[] = [
   {
     routePath: '',
     title: 'e-Fatura XML Excel Dönüştürücü — Ücretsiz, Sunucusuz, Anında (UBL-TR)',
@@ -90,7 +98,7 @@ const routesToPrerender = [
   })),
 ];
 
-function injectMetaTags(html, meta) {
+function injectMetaTags(html: string, meta: RouteMeta): string {
   let result = html;
 
   // Replace Title

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generateSitemap.mjs && tsc -b && vite build && node scripts/prerenderMeta.mjs",
+    "build": "tsx scripts/generateSitemap.ts && tsc -b && vite build && tsx scripts/prerenderMeta.ts",
     "lint": "oxlint",
     "preview": "vite preview"
   },
@@ -27,6 +27,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^6.0.3",
     "oxlint": "^1.71.0",
+    "tsx": "^4.19.3",
     "typescript": "~6.0.2",
     "vite": "^8.1.1",
     "wrangler": "^4.16.0"
