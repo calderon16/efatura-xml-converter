@@ -91,7 +91,7 @@ export const GUIDES: GuideArticle[] = [
     ctaText: 'Hem e-Fatura hem de e-Arşiv XML dosyalarınızı TCKN/VKN ayrımlarıyla birlikte Excel ortamında raporlayın.',
   },
   {
-    slug: 'e-fatura-zorunlulugu-kimleri-kapsiyor-2026-güncel-sinirlar',
+    slug: 'e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar',
     title: 'e-Fatura Zorunluluğu Kimleri Kapsıyor? 2026 Güncel Sınırlar ve Ciro Limitleri',
     metaDescription: 'GİB 2026 yılı güncel e-Fatura ve e-Arşiv geçiş limitleri, 3 Milyon TL ciro sınırı, e-ticaret 500 BİN TL sınırı ve Kağıt Fatura Düzenleme İstisnaları.',
     h1: '2026 Yılı e-Fatura ve e-Arşiv Fatura Geçiş Zorunluluk Sınırları',
@@ -159,7 +159,7 @@ export const GUIDES: GuideArticle[] = [
       {
         heading: 'JSON (JavaScript Object Notation): Otomasyon ve API Dili',
         paragraphs: [
-          'JSON, web uygulamaları ve REST API servislerinin kullandığı hafif veri formatıdır. Zapier, Make ve n8n otomasyonları ile e-Fatura verilerini ERP sistemlerine taşırken en çok tercih edilen format JSON yapısıdır.',
+          'JSON, web uygulamaları ve REST API servislerinin kullandığı hafif veri formatıdır. Zapier, Make ve n8n otomasyonları ile e-Fatura verilerini ERP sistemlerine taşırken en meşhur tercih JSON yapısıdır.',
         ],
       },
     ],

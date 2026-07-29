@@ -143,35 +143,6 @@ for (const meta of routesToPrerender) {
   const targetIndexPath = path.join(targetSubDir, 'index.html');
   fs.writeFileSync(targetIndexPath, prerenderedHtml, 'utf-8');
 
-  // Also handle ASCII / URL-decoded variant if contains non-ASCII characters
-  const decodedPath = decodeURIComponent(meta.routePath);
-  if (decodedPath !== meta.routePath) {
-    const decodedSubDir = path.join(distDir, decodedPath);
-    fs.mkdirSync(decodedSubDir, { recursive: true });
-    fs.writeFileSync(path.join(decodedSubDir, 'index.html'), prerenderedHtml, 'utf-8');
-  }
-
-  // Also create normalized ASCII version (e.g. guncel-sinirlar for güncel-sinirlar)
-  const asciiPath = meta.routePath
-    .replace(/ğ/g, 'g')
-    .replace(/Ğ/g, 'g')
-    .replace(/ü/g, 'u')
-    .replace(/Ü/g, 'u')
-    .replace(/ş/g, 's')
-    .replace(/Ş/g, 's')
-    .replace(/ı/g, 'i')
-    .replace(/İ/g, 'i')
-    .replace(/ö/g, 'o')
-    .replace(/Ö/g, 'o')
-    .replace(/ç/g, 'c')
-    .replace(/Ç/g, 'c');
-
-  if (asciiPath !== meta.routePath) {
-    const asciiSubDir = path.join(distDir, asciiPath);
-    fs.mkdirSync(asciiSubDir, { recursive: true });
-    fs.writeFileSync(path.join(asciiSubDir, 'index.html'), prerenderedHtml, 'utf-8');
-  }
-
   generatedCount++;
 }
 

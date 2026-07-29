@@ -16,11 +16,11 @@ const SEO_SLUGS = [
   'e-fatura-kdv-detay-raporu',
 ];
 
-// 5 Guide Articles Slugs
+// 5 Guide Articles Slugs (100% Pure ASCII)
 const GUIDE_SLUGS = [
   'ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi',
   'e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir',
-  'e-fatura-zorunlulugu-kimleri-kapsiyor-2026-güncel-sinirlar',
+  'e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar',
   'muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari',
   'e-fatura-xml-dosyasi-nasil-okunur-step-by-step',
 ];
