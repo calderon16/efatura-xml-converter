@@ -93,7 +93,7 @@ export const GUIDES: GuideArticle[] = [
   {
     slug: 'e-fatura-zorunlulugu-kimleri-kapsiyor-2026-güncel-sinirlar',
     title: 'e-Fatura Zorunluluğu Kimleri Kapsıyor? 2026 Güncel Sınırlar ve Ciro Limitleri',
-    metaDescription: 'GİB 2026 yılı güncel e-Fatura ve e-Arşiv geçiş limitleri, 3 Milyon TL ciro sınırı, e-ticaret 500 BİN TL sınırı ve 12.000 TL fatura kuralı.',
+    metaDescription: 'GİB 2026 yılı güncel e-Fatura ve e-Arşiv geçiş limitleri, 3 Milyon TL ciro sınırı, e-ticaret 500 BİN TL sınırı ve Kağıt Fatura Düzenleme İstisnaları.',
     h1: '2026 Yılı e-Fatura ve e-Arşiv Fatura Geçiş Zorunluluk Sınırları',
     date: '2026-07-29',
     readTime: '7 dk okuma',
@@ -118,9 +118,16 @@ export const GUIDES: GuideArticle[] = [
         ],
       },
       {
-        heading: '2026 Kağıt Fatura Kesme Sınırı (12.000 TL Kuralı)',
+        heading: 'Kağıt Fatura Düzenleme İstisnası ve Kağıt Fatura Sınırları',
         paragraphs: [
-          '2026 yılı için belirlenen fatura düzenleme üst sınırı 12.000 TL\'dir. e-Fatura sistemine dahil olmayan mükellefler dahi, vergi mükelleflerine veya nihai tüketicilere KDV dahil 12.000 TL üzerindeki faturaları GİB Portal üzerinden e-Arşiv Fatura olarak düzenlemekle yükümlüdür.',
+          'Vergi Usul Kanunu genel tebliğleri uyarınca e-Belge sistemine henüz geçmemiş olan mükellefler için kağıt fatura düzenleyebilme sınırı istisnai durumlarla sınırlandırılmıştır.',
+          'Özellikle basit usulde vergilendirilen ve işletme hesabı esasına göre defter tutan mükellefler için kağıt fatura düzenleyebilme istisna sınırı 3.000 TL olarak uygulanmaktadır (31 Aralık 2026 tarihine kadar geçerlidir). Bu sınır genel bir fatura sınırı olmayıp, yalnızca belirli defter tutma esaslarına tabi küçük işletmeler için kağıt evrak kesebilme üst limitidir.',
+        ],
+      },
+      {
+        heading: 'Önemli Uyarı ve Mevzuat Notu',
+        paragraphs: [
+          'Bu rehberde yer alan ciro ve limit rakamları Gelir İdaresi Başkanlığı (GİB) tarafından yayımlanan Resmi Gazete tebliğleri doğrultusunda derlenmiştir. Bu rakamlar GİB tebliğleriyle güncellenebilir. Kendi durumunuz için kesin bilgiyi mali müşavirinizden veya GİB\'in güncel tebliğlerinden teyit etmeniz önemle tavsiye olunur.',
         ],
       },
     ],
