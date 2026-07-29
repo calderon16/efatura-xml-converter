@@ -60,7 +60,7 @@ export const GuideDetailPage: React.FC<GuideDetailPageProps> = ({
     }
     ogDescEl.setAttribute('content', guide.metaDescription);
 
-    // Update Canonical Link
+    // Update Canonical Link with trailing slash
     let canonicalEl = document.querySelector('link[rel="canonical"]');
     if (!canonicalEl) {
       canonicalEl = document.createElement('link');
@@ -71,7 +71,7 @@ export const GuideDetailPage: React.FC<GuideDetailPageProps> = ({
       typeof window !== 'undefined'
         ? window.location.origin
         : 'https://efatura-xml-converter.calderon-hs91.workers.dev';
-    canonicalEl.setAttribute('href', `${currentOrigin}/rehberler/${guide.slug}`);
+    canonicalEl.setAttribute('href', `${currentOrigin}/rehberler/${guide.slug}/`);
   }, [guide]);
 
   const toggleFaq = (index: number) => {

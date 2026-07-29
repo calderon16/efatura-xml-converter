@@ -36,32 +36,32 @@ const routesToPrerender: RouteMeta[] = [
     routePath: 'xml-to-excel',
     title: 'e-Fatura XML → Excel Dönüştürücü — Ücretsiz & Anında (UBL-TR)',
     metaDescription: 'UBL-TR formatındaki e-Fatura XML dosyalarınızı tarayıcı içinde %100 güvenli, ücretsiz ve anında Excel (.xlsx) tablosuna dönüştürün. Sunucusuz & KVKK Uyumlu.',
-    canonicalUrl: `${BASE_URL}/xml-to-excel`,
+    canonicalUrl: `${BASE_URL}/xml-to-excel/`,
   },
   {
     routePath: 'xml-to-json',
     title: 'e-Fatura XML → JSON Dönüştürücü — UBL-TR Parser & API Entegrasyon',
     metaDescription: 'Yazılımcılar ve otomasyon geliştiricileri için UBL-TR XML faturalarını Yapısal (Nested) veya Düz (Flat Array) JSON formatına çevirin.',
-    canonicalUrl: `${BASE_URL}/xml-to-json`,
+    canonicalUrl: `${BASE_URL}/xml-to-json/`,
   },
   {
     routePath: 'e-fatura-xml-dogrulama',
     title: 'e-Fatura XML Doğrulama — Ücretsiz UBL-TR Kontrol Aracı',
     metaDescription: 'e-Fatura ve e-Arşiv UBL-TR XML dosyalarınızı şema, zorunlu alanlar ve Miktar × Birim Fiyat tutar hesaplaması yönünden ücretsiz doğrulayın.',
-    canonicalUrl: `${BASE_URL}/e-fatura-xml-dogrulama`,
+    canonicalUrl: `${BASE_URL}/e-fatura-xml-dogrulama/`,
   },
   {
     routePath: 'rehberler',
     title: 'e-Fatura Rehberleri ve Kılavuzlar — Mevzuat, UBL-TR & Dönüştürme',
     metaDescription: 'e-Fatura, e-Arşiv, UBL-TR şema yapısı ve 2026 GİB mevzuatı hakkında güncel rehber makaleleri ve pratik kılavuzlar.',
-    canonicalUrl: `${BASE_URL}/rehberler`,
+    canonicalUrl: `${BASE_URL}/rehberler/`,
   },
   // 10 SEO Landing Pages
   ...SEO_PAGES.map((page) => ({
     routePath: page.slug,
     title: page.title,
     metaDescription: page.metaDescription,
-    canonicalUrl: `${BASE_URL}/${page.slug}`,
+    canonicalUrl: `${BASE_URL}/${page.slug}/`,
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
@@ -80,7 +80,7 @@ const routesToPrerender: RouteMeta[] = [
     routePath: `rehberler/${guide.slug}`,
     title: guide.title,
     metaDescription: guide.metaDescription,
-    canonicalUrl: `${BASE_URL}/rehberler/${guide.slug}`,
+    canonicalUrl: `${BASE_URL}/rehberler/${guide.slug}/`,
     jsonLd: guide.faqItems
       ? {
           '@context': 'https://schema.org',

@@ -32,7 +32,7 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
     }
     metaDescEl.setAttribute('content', pageConfig.metaDescription);
 
-    // Update canonical link
+    // Update canonical link with trailing slash
     let canonicalEl = document.querySelector('link[rel="canonical"]');
     if (!canonicalEl) {
       canonicalEl = document.createElement('link');
@@ -43,7 +43,7 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
       typeof window !== 'undefined'
         ? window.location.origin
         : 'https://efatura-xml-converter.calderon-hs91.workers.dev';
-    canonicalEl.setAttribute('href', `${currentOrigin}/${pageConfig.slug}`);
+    canonicalEl.setAttribute('href', `${currentOrigin}/${pageConfig.slug}/`);
   }, [pageConfig]);
 
   const toggleFaq = (index: number) => {
