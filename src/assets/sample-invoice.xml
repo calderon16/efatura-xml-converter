@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+         xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+         xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+         xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+  <cbc:ProfileID>TICARIFATURA</cbc:ProfileID>
+  <cbc:ID>GIB2026000000123</cbc:ID>
+  <cbc:IssueDate>2026-04-29</cbc:IssueDate>
+  <cbc:IssueTime>14:30:00</cbc:IssueTime>
+
+  {/* Digital Signature Block to test ds:Signature bypass */}
+  <ds:Signature Id="Signature_GIB2026000000123">
+    <ds:SignedInfo>
+      <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>
+      <ds:SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"/>
+      <ds:DigestValue>MIIEowIBAAKCAQEAz9v+Y991+...===</ds:DigestValue>
+    </ds:SignedInfo>
+    <ds:SignatureValue>Base64SignatureDataDummyStringForTestingPurposes...</ds:SignatureValue>
+  </ds:Signature>
+
+  {/* Supplier Info with VKN */}
+  <cac:AccountingSupplierParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="VKN">9876543210</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>İSTANBUL ET VE GIDA ÜRÜNLERİ SANAYİ TİCARET A.Ş.</cbc:Name>
+      </cac:PartyName>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>9876543210</cbc:CompanyID>
+      </cac:PartyTaxScheme>
+    </cac:Party>
+  </cac:AccountingSupplierParty>
+
+  {/* Customer Info with TCKN */}
+  <cac:AccountingCustomerParty>
+    <cac:Party>
+      <cac:PartyIdentification>
+        <cbc:ID schemeID="TCKN">12345678901</cbc:ID>
+      </cac:PartyIdentification>
+      <cac:PartyName>
+        <cbc:Name>AHMET ŞAHİN - MÜŞTERİ ÖZEL İŞLETMESİ</cbc:Name>
+      </cac:PartyName>
+      <cac:PartyTaxScheme>
+        <cbc:CompanyID>12345678901</cbc:CompanyID>
+      </cac:PartyTaxScheme>
+    </cac:Party>
+  </cac:AccountingCustomerParty>
+
+  {/* General Totals */}
+  <cac:LegalMonetaryTotal>
+    <cbc:LineExtensionAmount currencyID="TRY">2500.00</cbc:LineExtensionAmount>
+    <cbc:TaxExclusiveAmount currencyID="TRY">2500.00</cbc:TaxExclusiveAmount>
+    <cbc:TaxInclusiveAmount currencyID="TRY">3250.00</cbc:TaxInclusiveAmount>
+    <cbc:PayableAmount currencyID="TRY">3250.00</cbc:PayableAmount>
+  </cac:LegalMonetaryTotal>
+
+  {/* Invoice Line 1: Multiple Taxes (KDV + ÖTV) */}
+  <cac:InvoiceLine>
+    <cbc:ID>1</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="KGM">10</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="TRY">1500.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>DANA KUŞBAŞI (İTHAL - 1. KALİTE)</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="TRY">150.00</cbc:PriceAmount>
+    </cac:Price>
+    <cac:TaxTotal>
+      <cac:TaxSubtotal>
+        <cbc:TaxableAmount currencyID="TRY">1500.00</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="TRY">300.00</cbc:TaxAmount>
+        <cbc:Percent>20.00</cbc:Percent>
+        <cac:TaxCategory>
+          <cbc:Name>KDV</cbc:Name>
+        </cac:TaxCategory>
+      </cac:TaxSubtotal>
+      <cac:TaxSubtotal>
+        <cbc:TaxableAmount currencyID="TRY">1500.00</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="TRY">150.00</cbc:TaxAmount>
+        <cbc:Percent>10.00</cbc:Percent>
+        <cac:TaxCategory>
+          <cbc:Name>ÖTV</cbc:Name>
+        </cac:TaxCategory>
+      </cac:TaxSubtotal>
+    </cac:TaxTotal>
+  </cac:InvoiceLine>
+
+  {/* Invoice Line 2: Standard KDV Item */}
+  <cac:InvoiceLine>
+    <cbc:ID>2</cbc:ID>
+    <cbc:InvoicedQuantity unitCode="C62">5</cbc:InvoicedQuantity>
+    <cbc:LineExtensionAmount currencyID="TRY">1000.00</cbc:LineExtensionAmount>
+    <cac:Item>
+      <cbc:Name>AMBALAJ KUTUSU (ÖZEL BASKI)</cbc:Name>
+    </cac:Item>
+    <cac:Price>
+      <cbc:PriceAmount currencyID="TRY">200.00</cbc:PriceAmount>
+    </cac:Price>
+    <cac:TaxTotal>
+      <cac:TaxSubtotal>
+        <cbc:TaxableAmount currencyID="TRY">1000.00</cbc:TaxableAmount>
+        <cbc:TaxAmount currencyID="TRY">300.00</cbc:TaxAmount>
+        <cbc:Percent>20.00</cbc:Percent>
+        <cac:TaxCategory>
+          <cbc:Name>KDV</cbc:Name>
+        </cac:TaxCategory>
+      </cac:TaxSubtotal>
+    </cac:TaxTotal>
+  </cac:InvoiceLine>
+</Invoice>
