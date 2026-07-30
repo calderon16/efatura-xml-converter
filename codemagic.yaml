@@ -4,11 +4,13 @@ workflows:
     instance_type: mac_mini_m1
     max_build_duration: 60
     environment:
-      node: 20.18.0
+      node: 22.12.0
       java: 17
     scripts:
       - name: Install dependencies
         script: |
+          rm -rf node_modules
+          rm -f package-lock.json
           npm install
       - name: Build web assets
         script: |
@@ -29,12 +31,14 @@ workflows:
     instance_type: mac_mini_m1
     max_build_duration: 60
     environment:
-      node: 20.18.0
+      node: 22.12.0
       xcode: latest
       cocoapods: default
     scripts:
       - name: Install dependencies
         script: |
+          rm -rf node_modules
+          rm -f package-lock.json
           npm install
       - name: Build web assets
         script: |
