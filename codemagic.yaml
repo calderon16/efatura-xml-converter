@@ -9,7 +9,7 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
-          npm ci
+          npm install
       - name: Build web assets
         script: |
           npm run build
@@ -35,7 +35,7 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
-          npm ci
+          npm install
       - name: Build web assets
         script: |
           npm run build
