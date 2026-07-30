@@ -9,6 +9,8 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
+          rm -rf node_modules
+          rm -f package-lock.json
           npm install
       - name: Build web assets
         script: |
@@ -35,6 +37,8 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
+          rm -rf node_modules
+          rm -f package-lock.json
           npm install
       - name: Build web assets
         script: |
