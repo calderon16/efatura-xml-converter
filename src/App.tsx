@@ -49,7 +49,7 @@ export function App() {
   };
 
   const handleNavigateTool = (tool: 'excel' | 'json') => {
-    const path = tool === 'json' ? '/xml-to-json' : '/xml-to-excel';
+    const path = tool === 'json' ? '/xml-to-json/' : '/xml-to-excel/';
     navigatePath(path);
   };
 
@@ -58,7 +58,7 @@ export function App() {
   };
 
   // Route Matching Logic
-  const normalizedPath = pathname.replace(/^\//, '').replace(/\/$/, '');
+  const normalizedPath = decodeURIComponent(pathname).replace(/^\//, '').replace(/\/$/, '');
   
   // 1. Check Validator Route
   const isValidatorRoute = normalizedPath === 'e-fatura-xml-dogrulama';
@@ -174,9 +174,15 @@ export function App() {
               </button>
             </div>
           ) : currentToolType === 'json' ? (
-            <JsonConverterPage onNavigate={handleNavigateTool} />
+            <JsonConverterPage
+              onNavigate={handleNavigateTool}
+              onNavigateSlug={handleNavigateSlug}
+            />
           ) : (
-            <ExcelConverterPage onNavigate={handleNavigateTool} />
+            <ExcelConverterPage
+              onNavigate={handleNavigateTool}
+              onNavigateSlug={handleNavigateSlug}
+            />
           )}
         </Suspense>
       </main>

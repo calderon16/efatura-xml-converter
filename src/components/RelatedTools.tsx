@@ -12,6 +12,16 @@ export const RelatedTools: React.FC<RelatedToolsProps> = ({
   onNavigate,
   onNavigateSlug,
 }) => {
+  const handleValidatorClick = () => {
+    if (onNavigateSlug) {
+      onNavigateSlug('e-fatura-xml-dogrulama/');
+    } else if (typeof window !== 'undefined') {
+      window.history.pushState({}, '', '/e-fatura-xml-dogrulama/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="w-full max-w-5xl mx-auto my-8 px-4">
       <div className="bg-gradient-to-r from-slate-900 to-indigo-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-800">
@@ -79,7 +89,7 @@ export const RelatedTools: React.FC<RelatedToolsProps> = ({
 
           {/* Card 3: Validator Tool */}
           <div
-            onClick={() => onNavigateSlug?.('e-fatura-xml-dogrulama')}
+            onClick={handleValidatorClick}
             className="p-5 rounded-2xl bg-slate-800/60 border border-slate-700 hover:border-emerald-400 hover:bg-slate-800 transition-all cursor-pointer flex flex-col justify-between group"
           >
             <div>
