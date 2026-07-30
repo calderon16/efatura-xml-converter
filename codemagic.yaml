@@ -9,9 +9,11 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
+          npm install -g npm@latest
           rm -rf node_modules
           rm -f package-lock.json
           npm install
+          ls node_modules/@rolldown/ || echo "UYARI: rolldown binding klasörü bulunamadı"
       - name: Build web assets
         script: |
           npm run build
@@ -37,9 +39,11 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
+          npm install -g npm@latest
           rm -rf node_modules
           rm -f package-lock.json
           npm install
+          ls node_modules/@rolldown/ || echo "UYARI: rolldown binding klasörü bulunamadı"
       - name: Build web assets
         script: |
           npm run build
