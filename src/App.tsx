@@ -26,6 +26,9 @@ const GuideDetailPage = lazy(() =>
 const SeoLandingPage = lazy(() =>
   import('./pages/SeoLandingPage').then((m) => ({ default: m.SeoLandingPage }))
 );
+const PrivacyPolicyPage = lazy(() =>
+  import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage }))
+);
 
 export function App() {
   const [pathname, setPathname] = useState<string>(() => {
@@ -66,19 +69,22 @@ export function App() {
   // 2. Check Guides List Route
   const isGuidesListRoute = normalizedPath === 'rehberler';
 
-  // 3. Check Guide Detail Route (/rehberler/:slug)
+  // 3. Check Privacy Policy Route
+  const isPrivacyPolicyRoute = normalizedPath === 'gizlilik-politikasi';
+
+  // 4. Check Guide Detail Route (/rehberler/:slug)
   const isGuideDetailMatch = normalizedPath.startsWith('rehberler/');
   const guideSlug = isGuideDetailMatch ? normalizedPath.replace(/^rehberler\//, '') : '';
   const matchedGuide = GUIDES.find((g) => g.slug === guideSlug);
 
-  // 4. Check SEO Landing Page Route
+  // 5. Check SEO Landing Page Route
   const matchedSeoPage = SEO_PAGES.find((p) => p.slug === normalizedPath);
 
-  // 5. Determine active tool type for Header
+  // 6. Determine active tool type for Header
   const isJsonTool = normalizedPath.includes('json') || matchedSeoPage?.targetTool === 'json';
   const currentToolType: 'excel' | 'json' = isJsonTool ? 'json' : 'excel';
 
-  // 6. Check 404
+  // 7. Check 404
   const isHomeOrExcel = normalizedPath === '' || normalizedPath === 'xml-to-excel';
   const isJsonRoute = normalizedPath === 'xml-to-json';
 
@@ -87,6 +93,7 @@ export function App() {
     !isJsonRoute &&
     !isValidatorRoute &&
     !isGuidesListRoute &&
+    !isPrivacyPolicyRoute &&
     !matchedGuide &&
     !matchedSeoPage;
 
@@ -145,6 +152,8 @@ export function App() {
               onNavigateSlug={handleNavigateSlug}
               onNavigateTool={handleNavigateTool}
             />
+          ) : isPrivacyPolicyRoute ? (
+            <PrivacyPolicyPage onNavigateSlug={handleNavigateSlug} />
           ) : matchedGuide ? (
             <GuideDetailPage
               guide={matchedGuide}
@@ -188,7 +197,7 @@ export function App() {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer onNavigateSlug={handleNavigateSlug} />
     </div>
   );
 }

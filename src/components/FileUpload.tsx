@@ -8,6 +8,7 @@ interface FileUploadProps {
   onError: (errorMessage: string) => void;
 }
 
+// TODO: AdMob Interstitial or Banner Ad integration for native mobile app monetization (Capacitor AdMob plugin)
 export const FileUpload: React.FC<FileUploadProps> = ({ onFilesSelected, onError }) => {
   const [isDragging, setIsDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);

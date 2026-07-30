@@ -56,6 +56,12 @@ const routesToPrerender: RouteMeta[] = [
     metaDescription: 'e-Fatura, e-Arşiv, UBL-TR şema yapısı ve 2026 GİB mevzuatı hakkında güncel rehber makaleleri ve pratik kılavuzlar.',
     canonicalUrl: `${BASE_URL}/rehberler/`,
   },
+  {
+    routePath: 'gizlilik-politikasi',
+    title: 'Gizlilik Politikası — e-Fatura XML Dönüştürücü',
+    metaDescription: 'e-Fatura XML Dönüştürücü gizlilik politikası. %100 yerel tarayıcı içi işleme, sıfır sunucu kaydı ve KVKK / GDPR tam uyum taahhüdü.',
+    canonicalUrl: `${BASE_URL}/gizlilik-politikasi/`,
+  },
   // 10 SEO Landing Pages
   ...SEO_PAGES.map((page) => ({
     routePath: page.slug,

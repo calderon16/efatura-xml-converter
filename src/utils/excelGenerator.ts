@@ -1,4 +1,4 @@
-import { saveAs } from 'file-saver';
+import { saveOrShareFile } from './nativeDownload';
 import type { ParsedResult } from '../types/ubl';
 
 /**
@@ -282,5 +282,9 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
   });
   
   const timestamp = new Date().toISOString().slice(0, 10);
-  saveAs(blob, `eFatura_Donusturulen_${timestamp}.xlsx`);
+  await saveOrShareFile(
+    blob,
+    `eFatura_Donusturulen_${timestamp}.xlsx`,
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  );
 }

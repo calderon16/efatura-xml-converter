@@ -36,6 +36,7 @@ const staticRoutes = [
   '/xml-to-json/',
   '/e-fatura-xml-dogrulama/',
   '/rehberler/',
+  '/gizlilik-politikasi/',
 ];
 
 const allUrls = [

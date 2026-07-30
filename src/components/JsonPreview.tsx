@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import type { ParsedResult } from '../types/ubl';
 import { getFormattedJsonString, type JsonOutputMode } from '../utils/jsonFormatter';
-import { saveAs } from 'file-saver';
+import { saveOrShareFile } from '../utils/nativeDownload';
 import {
   Copy,
   Check,
@@ -33,10 +33,13 @@ export const JsonPreview: React.FC<JsonPreviewProps> = ({ parsedResult, onReset 
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleDownload = () => {
-    const blob = new Blob([jsonString], { type: 'application/json;charset=utf-8' });
+  const handleDownload = async () => {
     const timestamp = new Date().toISOString().slice(0, 10);
-    saveAs(blob, `eFatura_${mode}_${timestamp}.json`);
+    await saveOrShareFile(
+      jsonString,
+      `eFatura_${mode}_${timestamp}.json`,
+      'application/json'
+    );
   };
 
   return (
