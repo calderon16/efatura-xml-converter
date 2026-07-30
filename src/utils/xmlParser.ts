@@ -187,6 +187,15 @@ export function parseUblXml(xmlString: string, fileName: string): InvoiceSummary
     });
   }
 
+  const uuid = getNSTagText(rootElement, UBL_NAMESPACES.CBC, 'UUID');
+  if (!uuid) {
+    missingFields.push({
+      invoiceId: invoiceId || 'BİLİNMİYOR',
+      field: 'ETTN / Evrensel Tekil Fatura No (UUID)',
+      description: 'XML içerisinde Invoice/cbc:UUID etiketi bulunamadı.',
+    });
+  }
+
   const issueDate = getNSTagText(rootElement, UBL_NAMESPACES.CBC, 'IssueDate');
   if (!issueDate) {
     missingFields.push({
@@ -340,6 +349,50 @@ export function parseUblXml(xmlString: string, fileName: string): InvoiceSummary
       mismatchReason,
     });
   });
+
+  // Top-Level Monetary Audit: Check Allowance / Charge / Prepaid presence
+  const allowanceTotalAmountText = getNSTagText(legalMonetaryTotal, UBL_NAMESPACES.CBC, 'AllowanceTotalAmount');
+  const chargeTotalAmountText = getNSTagText(legalMonetaryTotal, UBL_NAMESPACES.CBC, 'ChargeTotalAmount');
+  const prepaidAmountText = getNSTagText(legalMonetaryTotal, UBL_NAMESPACES.CBC, 'PrepaidAmount');
+
+  const hasSpecialMonetaryAdjustments =
+    (allowanceTotalAmountText !== '' && parseFloat(allowanceTotalAmountText) > 0) ||
+    (chargeTotalAmountText !== '' && parseFloat(chargeTotalAmountText) > 0) ||
+    (prepaidAmountText !== '' && parseFloat(prepaidAmountText) > 0);
+
+  // Determine top-level tax amount
+  const rootTaxTotalEls = getNSElements(rootElement, UBL_NAMESPACES.CAC, 'TaxTotal');
+  let topTaxAmount = 0;
+  if (rootTaxTotalEls.length > 0) {
+    topTaxAmount = parseFloat(getNSTagText(rootTaxTotalEls[0], UBL_NAMESPACES.CBC, 'TaxAmount')) || 0;
+  }
+  if (topTaxAmount === 0 && lineItems.length > 0) {
+    topTaxAmount = lineItems.reduce((acc, item) => acc + item.taxAmount, 0);
+  }
+
+  if (hasSpecialMonetaryAdjustments) {
+    // Discounted / Prepaid Invoice: Only check TaxExclusiveAmount + TaxAmount = TaxInclusiveAmount
+    if (taxExclusiveAmount > 0 && taxInclusiveAmount > 0 && Math.abs((taxExclusiveAmount + topTaxAmount) - taxInclusiveAmount) > 0.05) {
+      hasWarnings = true;
+      missingFields.push({
+        invoiceId: invoiceId || 'BİLİNMİYOR',
+        field: 'Matrah + Vergi Toplamı Tutarsızlığı',
+        description: `Vergi Hariç Tutar (${taxExclusiveAmount.toFixed(2)} TL) + Hesaplanan Vergi (${topTaxAmount.toFixed(2)} TL) != Vergiler Dahil Toplam (${taxInclusiveAmount.toFixed(2)} TL).`,
+      });
+    }
+  } else {
+    // Simple Invoice (No Allowance/Charge/Prepaid): Check LineExtensionTotal / TaxExclusive + TaxAmount = PayableAmount
+    const baseAmount = taxExclusiveAmount > 0 ? taxExclusiveAmount : lineExtensionTotal;
+    const expectedPayable = baseAmount + topTaxAmount;
+    if (payableAmount > 0 && Math.abs(expectedPayable - payableAmount) > 0.05) {
+      hasWarnings = true;
+      missingFields.push({
+        invoiceId: invoiceId || 'BİLİNMİYOR',
+        field: 'Ödenecek Tutar Tutarsızlığı',
+        description: `Hesaplanan Genel Toplam (${expectedPayable.toFixed(2)} TL) ile Faturadaki Ödenecek Tutar (${payableAmount.toFixed(2)} TL) uyuşmuyor.`,
+      });
+    }
+  }
 
   return {
     fileName,
