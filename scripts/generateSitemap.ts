@@ -45,6 +45,8 @@ const routes: RouteEntry[] = [
   { path: 'e-fatura-xml-dogrulama/', priority: '0.9', changefreq: 'weekly' },
   { path: 'rehberler/', priority: '0.9', changefreq: 'weekly' },
   { path: 'gizlilik-politikasi/', priority: '0.9', changefreq: 'weekly' },
+  { path: 'image-converter/', priority: '0.9', changefreq: 'weekly' },
+  { path: 'document-converter/', priority: '0.9', changefreq: 'weekly' },
   ...SEO_SLUGS.map((slug) => ({ path: `${slug}/`, priority: '0.8', changefreq: 'weekly' })),
   ...GUIDE_SLUGS.map((slug) => ({ path: `rehberler/${slug}/`, priority: '0.7', changefreq: 'weekly' })),
 ];

@@ -4,6 +4,8 @@ export const en = {
   'header.brandBadge': 'XML',
   'header.tagline': 'Convert any XML file, plus purpose-built invoice tools for Turkish e-Fatura (UBL-TR)',
   'nav.convert': 'Convert',
+  'nav.images': 'Images',
+  'nav.documents': 'Documents',
   'nav.validator': 'Validator',
   'nav.guides': 'Guides',
   'header.secureBadge': '100% In-Browser (Private)',
@@ -71,6 +73,45 @@ export const en = {
   'general.errorNoRecords': 'No repeating record structure could be detected in this XML — it may be too flat or too shallow to tabulate.',
   'general.detectedRecord': 'Detected record element:',
   'general.rowCount': '{count} rows detected',
+
+  // Image converter
+  'image.metaTitle': 'SchemaFlow — Free Image Converter (PNG, JPG, WebP)',
+  'image.heroBadge': 'Works With Any Image',
+  'image.heroTitle': 'Convert Images',
+  'image.heroTitleAccent': 'Between PNG, JPG and WebP',
+  'image.heroSubtitle': 'Upload a PNG, JPG, WebP, or SVG file — converted entirely in your browser, nothing is uploaded to a server.',
+  'image.errorConvertFailed': 'The image could not be converted. Try a different file.',
+  'image.newUpload': 'New Upload',
+  'image.targetFormatLabel': 'Convert to',
+  'image.converting': 'Converting…',
+  'image.convertAndDownload': 'Convert & Download',
+  'image.privacyNote': 'Conversion happens entirely on your device using your browser’s built-in image engine — the file is never uploaded anywhere.',
+
+  // Image upload zone
+  'imageUpload.errorUnsupported': 'Unsupported file type. Please upload a PNG, JPG, WebP, or SVG file.',
+  'imageUpload.title': 'Drag & Drop Your Image Here',
+  'imageUpload.subtitle': 'or click to browse your computer',
+  'imageUpload.selectButton': 'Select Image',
+  'imageUpload.note': 'PNG, JPG, WebP and SVG supported',
+
+  // Document converter
+  'document.metaTitle': 'SchemaFlow — Free Document Converter (Excel, PDF, Word)',
+  'document.heroBadge': 'Excel, PDF & Word',
+  'document.heroTitle': 'Convert Documents',
+  'document.heroTitleAccent': 'Between Excel, PDF and Word',
+  'document.heroSubtitle': 'Upload an Excel file — converted entirely in your browser, nothing is uploaded to a server. Extraction-based conversion works best for text and tabular documents; complex layouts may not be preserved exactly.',
+  'document.errorReadFailed': 'The file could not be read. Make sure it is a valid, unprotected file.',
+  'document.errorNoTextLayer': 'No text layer was detected in this PDF — it looks like a scanned or image-only document. Text extraction only works on PDFs with real, selectable text.',
+  'document.downloadWord': 'Download as Word (.docx)',
+  'document.newUpload': 'New Upload',
+  'document.convertToPdf': 'Convert to PDF',
+
+  // Document upload zone
+  'documentUpload.errorUnsupported': 'Unsupported file type. Please upload one of: {formats}.',
+  'documentUpload.title': 'Drag & Drop Your Document Here',
+  'documentUpload.subtitle': 'or click to browse your computer',
+  'documentUpload.selectButton': 'Select File',
+  'documentUpload.note': 'Processed entirely in your browser',
 
   // Invoice / General shared preview + export
   'preview.parsedSuccessfully': 'Parsed Successfully',
@@ -183,7 +224,7 @@ export const en = {
   'privacy.s2EmPhrase': 'Serverless & Client-Side (SPA)',
   'privacy.s2IntroAfter': 'model:',
   'privacy.s2Item1Label': 'Invoice Content:',
-  'privacy.s2Item1Body': "The UBL-TR XML invoices you upload are processed instantly in your device's web browser (WASM / JavaScript engine). Data is never sent to a server.",
+  'privacy.s2Item1Body': "The XML invoices, spreadsheets, PDFs, Word documents, and images you upload are processed instantly in your device's web browser (WASM / JavaScript engine). Data is never sent to a server.",
   'privacy.s2Item2Label': 'Personal / Commercial Data:',
   'privacy.s2Item2Body': 'VKN, TCKN, company name, address, amount, and line-item details are never saved to any external database.',
   'privacy.s2Item3Label': 'Device and Permissions:',

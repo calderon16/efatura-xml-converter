@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileSpreadsheet, ShieldCheck, BookOpen, FileCheck2, Languages } from 'lucide-react';
+import { FileSpreadsheet, ShieldCheck, BookOpen, FileCheck2, Languages, ImageIcon, FileText } from 'lucide-react';
 import { useTranslation } from '../i18n/LanguageContext';
 
 interface HeaderProps {
@@ -14,7 +14,9 @@ export const Header: React.FC<HeaderProps> = ({
   const { t, lang, setLang } = useTranslation();
   const isValidator = currentPath.includes('dogrulama');
   const isGuides = currentPath.includes('rehberler');
-  const isConvert = !isValidator && !isGuides;
+  const isImage = currentPath.includes('image-converter');
+  const isDocument = currentPath.includes('document-converter');
+  const isConvert = !isValidator && !isGuides && !isImage && !isDocument;
 
   return (
     <header className="bg-white border-b border-slate-200 sticky top-0 z-50">
@@ -55,6 +57,30 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <FileSpreadsheet className="w-3.5 h-3.5" />
             <span>{t('nav.convert')}</span>
+          </button>
+
+          <button
+            onClick={() => onNavigateSlug?.('image-converter')}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              isImage
+                ? 'bg-amber-500 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <ImageIcon className="w-3.5 h-3.5" />
+            <span>{t('nav.images')}</span>
+          </button>
+
+          <button
+            onClick={() => onNavigateSlug?.('document-converter')}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
+              isDocument
+                ? 'bg-slate-900 text-white shadow-xs'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>{t('nav.documents')}</span>
           </button>
 
           <button

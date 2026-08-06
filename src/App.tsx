@@ -27,6 +27,12 @@ const SeoLandingPage = lazy(() =>
 const PrivacyPolicyPage = lazy(() =>
   import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage }))
 );
+const ImageConverter = lazy(() =>
+  import('./pages/ImageConverter').then((m) => ({ default: m.ImageConverter }))
+);
+const DocumentConverter = lazy(() =>
+  import('./pages/DocumentConverter').then((m) => ({ default: m.DocumentConverter }))
+);
 
 interface AppShellProps {
   pathname: string;
@@ -64,6 +70,12 @@ function AppShell({ pathname, navigatePath }: AppShellProps) {
   // 3. Check Privacy Policy Route
   const isPrivacyPolicyRoute = normalizedPath === 'gizlilik-politikasi';
 
+  // 3b. Check Image Converter Route
+  const isImageConverterRoute = normalizedPath === 'image-converter';
+
+  // 3c. Check Document Converter Route
+  const isDocumentConverterRoute = normalizedPath === 'document-converter';
+
   // 4. Check Guide Detail Route (/rehberler/:slug)
   const isGuideDetailMatch = normalizedPath.startsWith('rehberler/');
   const guideSlug = isGuideDetailMatch ? normalizedPath.replace(/^rehberler\//, '') : '';
@@ -81,6 +93,8 @@ function AppShell({ pathname, navigatePath }: AppShellProps) {
     !isValidatorRoute &&
     !isGuidesListRoute &&
     !isPrivacyPolicyRoute &&
+    !isImageConverterRoute &&
+    !isDocumentConverterRoute &&
     !matchedGuide &&
     !matchedSeoPage;
 
@@ -130,6 +144,10 @@ function AppShell({ pathname, navigatePath }: AppShellProps) {
             <GuidesListPage onNavigateSlug={handleNavigateSlug} />
           ) : isPrivacyPolicyRoute ? (
             <PrivacyPolicyPage onNavigateSlug={handleNavigateSlug} />
+          ) : isImageConverterRoute ? (
+            <ImageConverter />
+          ) : isDocumentConverterRoute ? (
+            <DocumentConverter />
           ) : matchedGuide ? (
             <GuideDetailPage guide={matchedGuide} onNavigateSlug={handleNavigateSlug} />
           ) : matchedSeoPage ? (

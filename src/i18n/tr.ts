@@ -6,6 +6,8 @@ export const tr: Record<keyof typeof en, string> = {
   'header.brandBadge': 'XML',
   'header.tagline': 'Herhangi bir XML dosyasını dönüştürün, Türkiye e-Fatura (UBL-TR) için özel fatura araçlarıyla birlikte',
   'nav.convert': 'Dönüştür',
+  'nav.images': 'Görseller',
+  'nav.documents': 'Belgeler',
   'nav.validator': 'Doğrulayıcı',
   'nav.guides': 'Rehberler',
   'header.secureBadge': '%100 Tarayıcı İçi (Gizli)',
@@ -73,6 +75,45 @@ export const tr: Record<keyof typeof en, string> = {
   'general.errorNoRecords': 'Bu XML\'de tekrar eden bir kayıt yapısı tespit edilemedi — tabloya dökülemeyecek kadar düz veya sığ olabilir.',
   'general.detectedRecord': 'Algılanan kayıt öğesi:',
   'general.rowCount': '{count} satır tespit edildi',
+
+  // Görsel dönüştürücü
+  'image.metaTitle': 'SchemaFlow — Ücretsiz Görsel Dönüştürücü (PNG, JPG, WebP)',
+  'image.heroBadge': 'Her Görsel Formatıyla Çalışır',
+  'image.heroTitle': 'Görselleri',
+  'image.heroTitleAccent': 'PNG, JPG ve WebP Arasında Dönüştürün',
+  'image.heroSubtitle': 'PNG, JPG, WebP veya SVG dosyası yükleyin — dönüştürme tamamen tarayıcınızda gerçekleşir, hiçbir şey sunucuya yüklenmez.',
+  'image.errorConvertFailed': 'Görsel dönüştürülemedi. Farklı bir dosya deneyin.',
+  'image.newUpload': 'Yeni Yükleme',
+  'image.targetFormatLabel': 'Şu formata dönüştür',
+  'image.converting': 'Dönüştürülüyor…',
+  'image.convertAndDownload': 'Dönüştür ve İndir',
+  'image.privacyNote': 'Dönüştürme tamamen cihazınızda, tarayıcınızın yerleşik görsel motoru kullanılarak yapılır — dosya hiçbir yere yüklenmez.',
+
+  // Görsel yükleme alanı
+  'imageUpload.errorUnsupported': 'Desteklenmeyen dosya türü. Lütfen PNG, JPG, WebP veya SVG dosyası yükleyin.',
+  'imageUpload.title': 'Görselinizi Buraya Sürükleyin veya Seçin',
+  'imageUpload.subtitle': 'veya bilgisayarınızdan seçmek için tıklayın',
+  'imageUpload.selectButton': 'Görsel Seç',
+  'imageUpload.note': 'PNG, JPG, WebP ve SVG destekleniyor',
+
+  // Belge dönüştürücü
+  'document.metaTitle': 'SchemaFlow — Ücretsiz Belge Dönüştürücü (Excel, PDF, Word)',
+  'document.heroBadge': 'Excel, PDF ve Word',
+  'document.heroTitle': 'Belgeleri',
+  'document.heroTitleAccent': 'Excel, PDF ve Word Arasında Dönüştürün',
+  'document.heroSubtitle': 'Bir Excel dosyası yükleyin — dönüştürme tamamen tarayıcınızda gerçekleşir, hiçbir şey sunucuya yüklenmez. Metin ve tablo tabanlı belgelerde en iyi sonucu verir; karmaşık düzenler birebir korunmayabilir.',
+  'document.errorReadFailed': 'Dosya okunamadı. Geçerli ve korumasız bir dosya olduğundan emin olun.',
+  'document.errorNoTextLayer': 'Bu PDF\'te metin katmanı tespit edilemedi — taranmış veya sadece görsel içeren bir belge gibi görünüyor. Metin çıkarma yalnızca gerçek, seçilebilir metin içeren PDF\'lerde çalışır.',
+  'document.downloadWord': "Word Olarak İndir (.docx)",
+  'document.newUpload': 'Yeni Yükleme',
+  'document.convertToPdf': "PDF'e Dönüştür",
+
+  // Belge yükleme alanı
+  'documentUpload.errorUnsupported': 'Desteklenmeyen dosya türü. Lütfen şunlardan birini yükleyin: {formats}.',
+  'documentUpload.title': 'Belgenizi Buraya Sürükleyin veya Seçin',
+  'documentUpload.subtitle': 'veya bilgisayarınızdan seçmek için tıklayın',
+  'documentUpload.selectButton': 'Dosya Seç',
+  'documentUpload.note': 'Tamamen tarayıcınızda işlenir',
 
   // Shared preview + export
   'preview.parsedSuccessfully': 'Başarıyla Ayrıştırıldı',
@@ -185,7 +226,7 @@ export const tr: Record<keyof typeof en, string> = {
   'privacy.s2EmPhrase': 'Sunucusuz (Serverless) & İstemci Tarafı (Client-Side SPA)',
   'privacy.s2IntroAfter': 'modelinde tasarlanmıştır:',
   'privacy.s2Item1Label': 'Fatura İçerikleri:',
-  'privacy.s2Item1Body': 'Yüklediğiniz UBL-TR XML faturaları cihazınızın web tarayıcısında (WASM / JavaScript motoru) anında işlenir. Veriler sunucuya gönderilmez.',
+  'privacy.s2Item1Body': 'Yüklediğiniz XML faturalar, Excel tabloları, PDF\'ler, Word belgeleri ve görseller cihazınızın web tarayıcısında (WASM / JavaScript motoru) anında işlenir. Veriler sunucuya gönderilmez.',
   'privacy.s2Item2Label': 'Kişisel / Ticari Veriler:',
   'privacy.s2Item2Body': 'VKN, TCKN, Firma Unvanı, Adres, Tutar ve Kalem detayları hiçbir harici veritabanına kaydedilmez.',
   'privacy.s2Item3Label': 'Cihaz ve İzinler:',

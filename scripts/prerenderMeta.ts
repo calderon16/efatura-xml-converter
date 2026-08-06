@@ -92,6 +92,28 @@ const routesToPrerender: RouteMeta[] = [
       tr: 'SchemaFlow gizlilik politikası. %100 tarayıcı içi yerel işleme, sıfır sunucu kaydı ve tam KVKK / GDPR uyum taahhüdü.',
     },
   },
+  {
+    routePath: 'image-converter',
+    title: {
+      en: 'SchemaFlow — Free Image Converter (PNG, JPG, WebP)',
+      tr: 'SchemaFlow — Ücretsiz Görsel Dönüştürücü (PNG, JPG, WebP)',
+    },
+    metaDescription: {
+      en: 'Convert images between PNG, JPG, and WebP instantly in your browser — 100% client-side, nothing uploaded.',
+      tr: 'Görsellerinizi PNG, JPG ve WebP arasında anında tarayıcınızda dönüştürün — %100 istemci taraflı, hiçbir şey yüklenmez.',
+    },
+  },
+  {
+    routePath: 'document-converter',
+    title: {
+      en: 'SchemaFlow — Free Document Converter (Excel, PDF, Word)',
+      tr: 'SchemaFlow — Ücretsiz Belge Dönüştürücü (Excel, PDF, Word)',
+    },
+    metaDescription: {
+      en: 'Convert between Excel, PDF, and Word instantly in your browser — 100% client-side, nothing uploaded.',
+      tr: 'Excel, PDF ve Word arasında anında tarayıcınızda dönüştürün — %100 istemci taraflı, hiçbir şey yüklenmez.',
+    },
+  },
   // 9 SEO Landing Pages
   ...SEO_PAGES.map((page) => ({
     routePath: page.slug,
