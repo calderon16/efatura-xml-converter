@@ -55,8 +55,6 @@ export const tr: Record<keyof typeof en, string> = {
   'processingState.stage2': 'Yapı ve alanlar ayrıştırılıyor...',
   'processingState.stage3': 'Tutarlılık denetimleri yapılıyor...',
   'processingState.stage4': 'Çıktı hazırlanıyor...',
-  'processingState.adSlotLabel': 'Reklam Alanı Placeholder (#ad-slot)',
-  'processingState.adSlotSubtext': 'Bu alana reklam kodu entegre edilebilir',
 
   // Invoice converter
   'invoice.heroBadge': '%100 Tarayıcı İçi Güvenli Dönüştürücü',

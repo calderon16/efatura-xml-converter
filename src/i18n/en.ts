@@ -53,8 +53,6 @@ export const en = {
   'processingState.stage2': 'Parsing structure and fields...',
   'processingState.stage3': 'Running consistency checks...',
   'processingState.stage4': 'Preparing output...',
-  'processingState.adSlotLabel': 'Ad Slot Placeholder (#ad-slot)',
-  'processingState.adSlotSubtext': 'Ad code can be integrated into this area',
 
   // Invoice converter (Invoice Mode home / hero)
   'invoice.heroBadge': '100% In-Browser Secure Converter',

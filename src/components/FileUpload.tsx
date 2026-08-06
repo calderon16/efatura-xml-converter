@@ -33,7 +33,6 @@ const SAMPLE_GENERIC_XML = `<?xml version="1.0" encoding="UTF-8"?>
   </Product>
 </ProductCatalog>`;
 
-// TODO: AdMob Interstitial or Banner Ad integration for native mobile app monetization (Capacitor AdMob plugin)
 export const FileUpload: React.FC<FileUploadProps> = ({ onFilesSelected, onError, variant = 'invoice' }) => {
   const { t } = useTranslation();
   const [isDragging, setIsDragging] = useState(false);

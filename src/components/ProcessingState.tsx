@@ -63,18 +63,9 @@ export const ProcessingState: React.FC<ProcessingStateProps> = ({ fileCount, onC
         />
       </div>
 
-      <div className="flex items-center justify-between text-xs font-semibold text-slate-600 mb-6">
+      <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
         <span>{stageMessage}</span>
         <span className="text-blue-900">{lang === 'tr' ? `%${progress}` : `${progress}%`}</span>
-      </div>
-
-      {/* Mandatory Ad Slot Placeholder */}
-      <div
-        id="ad-slot"
-        className="w-full min-h-[90px] mt-6 p-4 rounded-xl border border-dashed border-slate-300 bg-slate-50/50 flex flex-col items-center justify-center text-slate-400 text-xs gap-1"
-      >
-        <span className="font-medium">{t('processingState.adSlotLabel')}</span>
-        <span className="text-[11px] opacity-75">{t('processingState.adSlotSubtext')}</span>
       </div>
     </div>
   );
