@@ -10,7 +10,7 @@ import { saveAs } from 'file-saver';
 export async function saveOrShareFile(
   fileData: Blob | string,
   fileName: string,
-  _mimeType: string
+  mimeType: string
 ): Promise<void> {
   if (Capacitor.isNativePlatform()) {
     try {
@@ -38,16 +38,16 @@ export async function saveOrShareFile(
       });
     } catch (err) {
       console.error('Native file save/share failed, falling back to web download:', err);
-      fallbackWebSave(fileData, fileName);
+      fallbackWebSave(fileData, fileName, mimeType);
     }
   } else {
-    fallbackWebSave(fileData, fileName);
+    fallbackWebSave(fileData, fileName, mimeType);
   }
 }
 
-function fallbackWebSave(fileData: Blob | string, fileName: string): void {
+function fallbackWebSave(fileData: Blob | string, fileName: string, mimeType: string): void {
   if (typeof fileData === 'string') {
-    const blob = new Blob([fileData], { type: 'application/json;charset=utf-8' });
+    const blob = new Blob([fileData], { type: mimeType });
     saveAs(blob, fileName);
   } else {
     saveAs(fileData, fileName);

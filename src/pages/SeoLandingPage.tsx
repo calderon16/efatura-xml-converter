@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import type { SeoPageConfig } from '../data/seoPages';
 import { JsonLdFaq } from '../components/JsonLdFaq';
-import { ExcelConverterPage } from './ExcelConverterPage';
-import { JsonConverterPage } from './JsonConverterPage';
+import { InvoiceConverter } from './InvoiceConverter';
 import { PopularSearches } from '../components/PopularSearches';
+import { useTranslation } from '../i18n/LanguageContext';
 import { HelpCircle, ChevronDown, Sparkles } from 'lucide-react';
 
 interface SeoLandingPageProps {
   pageConfig: SeoPageConfig;
-  onNavigateTool: (tool: 'excel' | 'json') => void;
   onNavigateSlug: (slug: string) => void;
 }
 
 export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
   pageConfig,
-  onNavigateTool,
   onNavigateSlug,
 }) => {
+  const { t, lang } = useTranslation();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   // Synchronous document head management for SEO title, description, and canonical link
   useEffect(() => {
-    document.title = pageConfig.title;
+    document.title = pageConfig.title[lang];
 
     // Update meta description
     let metaDescEl = document.querySelector('meta[name="description"]');
@@ -30,7 +29,7 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
       metaDescEl.setAttribute('name', 'description');
       document.head.appendChild(metaDescEl);
     }
-    metaDescEl.setAttribute('content', pageConfig.metaDescription);
+    metaDescEl.setAttribute('content', pageConfig.metaDescription[lang]);
 
     // Update canonical link with trailing slash
     let canonicalEl = document.querySelector('link[rel="canonical"]');
@@ -44,7 +43,7 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
         ? window.location.origin
         : 'https://efatura-xml-converter.calderon-hs91.workers.dev';
     canonicalEl.setAttribute('href', `${currentOrigin}/${pageConfig.slug}/`);
-  }, [pageConfig]);
+  }, [pageConfig, lang]);
 
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
@@ -53,40 +52,36 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
   return (
     <div className="w-full flex flex-col items-center">
       {/* Schema.org FAQPage Structured Data */}
-      <JsonLdFaq faqItems={pageConfig.faqItems} />
+      <JsonLdFaq faqItems={pageConfig.faqItems} lang={lang} />
 
       {/* SEO Landing Page Custom Hero & Intro */}
       <div className="text-center max-w-4xl my-4 px-4">
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 font-semibold text-xs mb-3 border border-blue-200/80">
+        <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-blue-50 text-blue-900 font-semibold text-xs mb-3 border border-blue-200/80">
           <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-          <span>Özel Rehber & Ücretsiz Dönüştürücü</span>
+          <span>{t('seo.badge')}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
-          {pageConfig.h1}
+        <h1 className="font-heading text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight mb-4">
+          {pageConfig.h1[lang]}
         </h1>
 
         <p className="text-slate-600 text-sm sm:text-base leading-relaxed bg-white p-5 rounded-2xl border border-slate-200 shadow-2xs text-left sm:text-center">
-          {pageConfig.introText}
+          {pageConfig.introText[lang]}
         </p>
       </div>
 
-      {/* Embedded Tool Component (Excel or JSON Converter) */}
+      {/* Embedded Converter (pinned to Invoice mode - these pages target invoice-specific keywords) */}
       <div className="w-full">
-        {pageConfig.targetTool === 'excel' ? (
-          <ExcelConverterPage onNavigate={onNavigateTool} />
-        ) : (
-          <JsonConverterPage onNavigate={onNavigateTool} />
-        )}
+        <InvoiceConverter />
       </div>
 
       {/* FAQ Accordion Section for SEO and Users */}
       <section className="w-full max-w-4xl mx-auto my-10 px-4">
         <div className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-xs">
           <div className="flex items-center gap-2 mb-6">
-            <HelpCircle className="w-5 h-5 text-blue-600" />
-            <h2 className="text-lg md:text-xl font-bold text-slate-900">
-              Sıkça Sorulan Sorular (SSS)
+            <HelpCircle className="w-5 h-5 text-blue-900" />
+            <h2 className="font-heading text-lg md:text-xl font-bold text-slate-900">
+              {t('faq.heading')}
             </h2>
           </div>
 
@@ -103,7 +98,7 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
                     type="button"
                     className="w-full p-4 text-left font-bold text-sm text-slate-800 flex items-center justify-between gap-4 bg-slate-50/50 hover:bg-slate-100/60 transition-colors"
                   >
-                    <span>{faq.question}</span>
+                    <span>{faq.question[lang]}</span>
                     <ChevronDown
                       className={`w-4 h-4 text-slate-500 transition-transform ${
                         isOpen ? 'rotate-180' : ''
@@ -113,7 +108,7 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
 
                   {isOpen && (
                     <div className="p-4 bg-white text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100">
-                      {faq.answer}
+                      {faq.answer[lang]}
                     </div>
                   )}
                 </div>

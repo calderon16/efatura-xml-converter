@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">e-Fatura XML Dönüştürücü</string>
-    <string name="title_activity_main">e-Fatura XML Dönüştürücü</string>
+    <string name="app_name">SchemaFlow</string>
+    <string name="title_activity_main">SchemaFlow</string>
     <string name="package_name">com.calderon.efaturaxml</string>
     <string name="custom_url_scheme">com.calderon.efaturaxml</string>
 </resources>

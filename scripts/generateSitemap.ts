@@ -4,14 +4,13 @@ import { fileURLToPath } from 'url';
 import { SEO_PAGES } from '../src/data/seoPages';
 import { GUIDES } from '../src/data/guides';
 
-// 10 SEO Landing Pages Slugs
+// 9 SEO Landing Pages Slugs
 const SEO_SLUGS = [
   'e-fatura-xml-excel-donusturucu',
   'e-fatura-excele-nasil-aktarilir',
   'ubl-tr-xml-okuyucu',
   'e-fatura-toplu-donusturme',
   'e-arsiv-fatura-excel',
-  'e-fatura-xml-json-donusturucu',
   'fatura-xml-veri-cekme',
   'muhasebe-e-fatura-excel-aktarim',
   'ubl-invoice-to-excel',
@@ -33,7 +32,6 @@ const currentDate = new Date().toISOString().slice(0, 10);
 const staticRoutes = [
   '/',
   '/xml-to-excel/',
-  '/xml-to-json/',
   '/e-fatura-xml-dogrulama/',
   '/rehberler/',
   '/gizlilik-politikasi/',

@@ -1,5 +1,5 @@
 {
-  "name": "projeler",
+  "name": "schemaflow",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -19,6 +19,8 @@
     "clsx": "^2.1.1",
     "exceljs": "^4.4.0",
     "file-saver": "^2.0.5",
+    "jspdf": "^4.2.1",
+    "jspdf-autotable": "^5.0.8",
     "lucide-react": "^1.27.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

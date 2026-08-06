@@ -97,29 +97,40 @@ function extractPartyInfo(partyContainer: Element | null): { name: string; vkn: 
     }
   }
 
-  // Extract VKN / TCKN (Inspect PartyIdentification/ID schemeID attribute)
+  // Extract VKN / TCKN (Inspect PartyIdentification/ID schemeID attribute).
+  // A Party can carry several PartyIdentification blocks (VKN/TCKN alongside e.g. a trade
+  // registry number or MERSIS number) - prefer the one explicitly tagged schemeID="VKN"/"TCKN"
+  // over whichever happens to appear first in the XML.
   let vkn = '';
   let vknType = '';
 
   const partyIdentifications = getNSElements(party, UBL_NAMESPACES.CAC, 'PartyIdentification');
+  let firstNonEmpty: { val: string; schemeAttr: string | undefined } | null = null;
+
   for (const pid of partyIdentifications) {
     const idEls = getNSElements(pid, UBL_NAMESPACES.CBC, 'ID');
-    if (idEls.length > 0) {
-      const idEl = idEls[0];
-      const val = idEl.textContent?.trim() || '';
-      if (val) {
-        vkn = val;
-        const schemeAttr = idEl.getAttribute('schemeID')?.toUpperCase();
-        if (schemeAttr === 'VKN') {
-          vknType = 'VKN';
-        } else if (schemeAttr === 'TCKN') {
-          vknType = 'TCKN';
-        } else {
-          vknType = val.length === 11 ? 'TCKN' : 'VKN';
-        }
-        break;
-      }
+    if (idEls.length === 0) continue;
+
+    const idEl = idEls[0];
+    const val = idEl.textContent?.trim() || '';
+    if (!val) continue;
+
+    const schemeAttr = idEl.getAttribute('schemeID')?.toUpperCase();
+
+    if (!firstNonEmpty) {
+      firstNonEmpty = { val, schemeAttr };
     }
+
+    if (schemeAttr === 'VKN' || schemeAttr === 'TCKN') {
+      vkn = val;
+      vknType = schemeAttr;
+      break;
+    }
+  }
+
+  if (!vkn && firstNonEmpty) {
+    vkn = firstNonEmpty.val;
+    vknType = firstNonEmpty.val.length === 11 ? 'TCKN' : 'VKN';
   }
 
   if (!vkn) {
@@ -292,6 +303,7 @@ export function parseUblXml(xmlString: string, fileName: string): InvoiceSummary
     let primaryTaxPercent = 0;
     let totalLineTaxAmount = 0;
     let taxableAmount = lineExtensionAmount;
+    let taxableAmountSet = false;
 
     if (taxSubtotalEls.length > 0) {
       taxSubtotalEls.forEach((subEl) => {
@@ -306,7 +318,13 @@ export function parseUblXml(xmlString: string, fileName: string): InvoiceSummary
           primaryTaxPercent = percent;
         }
         totalLineTaxAmount += subTaxAmount;
-        taxableAmount = subTaxable;
+        // Keep the FIRST subtotal's taxable base as the line's reported taxableAmount -
+        // mirrors primaryTaxPercent's "first wins" rule instead of ending up with whichever
+        // tax category happens to be listed last in the XML.
+        if (!taxableAmountSet) {
+          taxableAmount = subTaxable;
+          taxableAmountSet = true;
+        }
 
         taxSubtotals.push({
           taxName,

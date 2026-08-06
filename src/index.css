@@ -1,12 +1,33 @@
 @import "tailwindcss";
 
+/*
+ * Design system tokens (Secure FinTech Exchange — Corporate/Modern, Design/secure_fintech_exchange/DESIGN.md).
+ * Plus Jakarta Sans for headings (font-heading), Inter for body/UI (font-sans), JetBrains Mono for
+ * XML/JSON/code previews (font-mono). Overriding Tailwind's default font-sans/font-mono so every
+ * existing `font-mono`/body-inherited text picks these up automatically.
+ */
+@theme {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
 @layer base {
   body {
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: var(--font-sans);
     background-color: #f8fafc;
     color: #0f172a;
     -webkit-font-smoothing: antialiased;
   }
+}
+
+/* Soft tonal elevation for cards, per DESIGN.md "Elevation & Depth" (navy-tinted, not flat black) */
+.shadow-card {
+  box-shadow: 0px 4px 20px rgba(30, 58, 138, 0.05);
+}
+
+.shadow-card-hover {
+  box-shadow: 0px 8px 28px rgba(30, 58, 138, 0.09);
 }
 
 /* Custom glassmorphism and subtle animation effects */

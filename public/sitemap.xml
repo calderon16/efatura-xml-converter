@@ -2,127 +2,115 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/xml-to-excel/</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/xml-to-json/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-xml-dogrulama/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/gizlilik-politikasi/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-xml-excel-donusturucu/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-excele-nasil-aktarilir/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/ubl-tr-xml-okuyucu/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-toplu-donusturme/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-arsiv-fatura-excel/</loc>
-    <lastmod>2026-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-xml-json-donusturucu/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/fatura-xml-veri-cekme/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/muhasebe-e-fatura-excel-aktarim/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/ubl-invoice-to-excel/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-kdv-detay-raporu/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/</loc>
-    <lastmod>2026-07-30</lastmod>
+    <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>

@@ -1,5 +1,6 @@
 import { saveOrShareFile } from './nativeDownload';
 import type { ParsedResult } from '../types/ubl';
+import type { TabularData } from '../types/generic';
 
 /**
  * Generates an Excel (.xlsx) workbook with 3 tabs and applies visual styling,
@@ -287,4 +288,55 @@ export async function exportToExcel(parsedResult: ParsedResult): Promise<void> {
     `eFatura_Donusturulen_${timestamp}.xlsx`,
     'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
   );
+}
+
+/**
+ * Single-sheet Excel export for General XML Mode's schema-agnostic tabular data - no invoice
+ * assumptions, just headers + rows with the same navy-header/frozen-row styling as the invoice
+ * workbook above.
+ */
+export async function exportGenericTableToExcel(data: TabularData, fileName: string): Promise<void> {
+  const ExcelJSModule = await import('exceljs');
+  const ExcelJS = ExcelJSModule.default || ExcelJSModule;
+
+  const workbook = new ExcelJS.Workbook();
+  workbook.creator = 'SchemaFlow';
+  workbook.created = new Date();
+
+  const sheet = workbook.addWorksheet('Data', {
+    views: [{ state: 'frozen', ySplit: 1 }],
+  });
+
+  sheet.columns = data.headers.map((h) => ({ header: h, key: h, width: Math.min(Math.max(h.length + 4, 12), 40) }));
+
+  const headerRow = sheet.getRow(1);
+  headerRow.height = 26;
+  headerRow.eachCell((cell: any) => {
+    cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: '1E3A8A' } };
+    cell.font = { name: 'Segoe UI', size: 11, bold: true, color: { argb: 'FFFFFF' } };
+    cell.alignment = { vertical: 'middle', horizontal: 'center' };
+  });
+
+  for (const row of data.rows) {
+    const rowValues: Record<string, string | number> = {};
+    data.headers.forEach((h, i) => {
+      rowValues[h] = row[i];
+    });
+    sheet.addRow(rowValues);
+  }
+
+  sheet.columns.forEach((col: any) => {
+    let maxLen = 12;
+    col.eachCell?.({ includeEmpty: false }, (cell: any) => {
+      const valStr = cell.value ? cell.value.toString() : '';
+      if (valStr.length > maxLen) maxLen = valStr.length;
+    });
+    col.width = Math.min(Math.max(maxLen + 4, 12), 50);
+  });
+
+  const buffer = await workbook.xlsx.writeBuffer();
+  const blob = new Blob([buffer], {
+    type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+  });
+  await saveOrShareFile(blob, fileName, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 }

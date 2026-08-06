@@ -27,56 +27,55 @@ interface RouteMeta {
 
 const routesToPrerender: RouteMeta[] = [
   {
+    // Not actually applied - the injection loop below skips routePath '' and leaves index.html's
+    // own <head> as the source of truth for the root route. Kept here (accurate, not stale) so
+    // this array documents every route rather than mysteriously omitting one.
     routePath: '',
-    title: 'e-Fatura XML Excel Dönüştürücü — Ücretsiz, Sunucusuz, Anında (UBL-TR)',
-    metaDescription: 'Türkiye e-Fatura standardı UBL-TR XML dosyalarınızı tarayıcınızda %100 güvenli, sunucusuz ve anında Excel (.xlsx) formatına dönüştürün. Ücretsiz ve toplu dönüştürme desteği.',
+    title: 'SchemaFlow — Convert Any XML File to Excel, CSV or PDF',
+    metaDescription: '100% client-side XML conversion — no server upload, no schema lock-in. Works with any XML, with a dedicated mode for Turkish e-Fatura (UBL-TR) invoices.',
     canonicalUrl: `${BASE_URL}/`,
   },
   {
     routePath: 'xml-to-excel',
-    title: 'e-Fatura XML → Excel Dönüştürücü — Ücretsiz & Anında (UBL-TR)',
-    metaDescription: 'UBL-TR formatındaki e-Fatura XML dosyalarınızı tarayıcı içinde %100 güvenli, ücretsiz ve anında Excel (.xlsx) tablosuna dönüştürün. Sunucusuz & KVKK Uyumlu.',
+    title: 'e-Fatura XML to Excel Converter — Free & Instant (UBL-TR)',
+    metaDescription: 'Convert UBL-TR format e-Fatura XML files to Excel (.xlsx), 100% securely in your browser, free and instant. Serverless & KVKK compliant.',
     canonicalUrl: `${BASE_URL}/xml-to-excel/`,
   },
   {
-    routePath: 'xml-to-json',
-    title: 'e-Fatura XML → JSON Dönüştürücü — UBL-TR Parser & API Entegrasyon',
-    metaDescription: 'Yazılımcılar ve otomasyon geliştiricileri için UBL-TR XML faturalarını Yapısal (Nested) veya Düz (Flat Array) JSON formatına çevirin.',
-    canonicalUrl: `${BASE_URL}/xml-to-json/`,
-  },
-  {
     routePath: 'e-fatura-xml-dogrulama',
-    title: 'e-Fatura XML Doğrulama — Ücretsiz UBL-TR Kontrol Aracı',
-    metaDescription: 'e-Fatura ve e-Arşiv UBL-TR XML dosyalarınızı şema, zorunlu alanlar ve Miktar × Birim Fiyat tutar hesaplaması yönünden ücretsiz doğrulayın.',
+    title: 'e-Fatura XML Validator — Free UBL-TR Compliance Checker',
+    metaDescription: 'Instantly validate your e-Fatura and e-Arşiv UBL-TR XML files for schema compliance, required fields, and Quantity × Unit Price amount accuracy, for free.',
     canonicalUrl: `${BASE_URL}/e-fatura-xml-dogrulama/`,
   },
   {
     routePath: 'rehberler',
-    title: 'e-Fatura Rehberleri ve Kılavuzlar — Mevzuat, UBL-TR & Dönüştürme',
-    metaDescription: 'e-Fatura, e-Arşiv, UBL-TR şema yapısı ve 2026 GİB mevzuatı hakkında güncel rehber makaleleri ve pratik kılavuzlar.',
+    title: 'e-Fatura Guides and How-Tos — Regulations, UBL-TR & Conversion',
+    metaDescription: 'Up-to-date guide articles and practical how-tos on e-Fatura, e-Arşiv, UBL-TR schema structure, and 2026 GİB regulations.',
     canonicalUrl: `${BASE_URL}/rehberler/`,
   },
   {
     routePath: 'gizlilik-politikasi',
-    title: 'Gizlilik Politikası — e-Fatura XML Dönüştürücü',
-    metaDescription: 'e-Fatura XML Dönüştürücü gizlilik politikası. %100 yerel tarayıcı içi işleme, sıfır sunucu kaydı ve KVKK / GDPR tam uyum taahhüdü.',
+    title: 'Privacy Policy — SchemaFlow',
+    metaDescription: 'SchemaFlow privacy policy. 100% local in-browser processing, zero server logging, and full KVKK / GDPR compliance commitment.',
     canonicalUrl: `${BASE_URL}/gizlilik-politikasi/`,
   },
-  // 10 SEO Landing Pages
+  // 9 SEO Landing Pages (English is the default/primary language, so that's what's prerendered
+  // statically here; the client-side language toggle still switches the rendered page to Turkish
+  // post-hydration, this only affects what a crawler sees on the very first paint)
   ...SEO_PAGES.map((page) => ({
     routePath: page.slug,
-    title: page.title,
-    metaDescription: page.metaDescription,
+    title: page.title.en,
+    metaDescription: page.metaDescription.en,
     canonicalUrl: `${BASE_URL}/${page.slug}/`,
     jsonLd: {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
       mainEntity: page.faqItems.map((item) => ({
         '@type': 'Question',
-        name: item.question,
+        name: item.question.en,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: item.answer,
+          text: item.answer.en,
         },
       })),
     },
@@ -84,8 +83,8 @@ const routesToPrerender: RouteMeta[] = [
   // 5 Guide Articles
   ...GUIDES.map((guide) => ({
     routePath: `rehberler/${guide.slug}`,
-    title: guide.title,
-    metaDescription: guide.metaDescription,
+    title: guide.title.en,
+    metaDescription: guide.metaDescription.en,
     canonicalUrl: `${BASE_URL}/rehberler/${guide.slug}/`,
     jsonLd: guide.faqItems
       ? {
@@ -93,10 +92,10 @@ const routesToPrerender: RouteMeta[] = [
           '@type': 'FAQPage',
           mainEntity: guide.faqItems.map((item) => ({
             '@type': 'Question',
-            name: item.question,
+            name: item.question.en,
             acceptedAnswer: {
               '@type': 'Answer',
-              text: item.answer,
+              text: item.answer.en,
             },
           })),
         }

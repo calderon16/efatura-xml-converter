@@ -1,11 +1,18 @@
 import React from 'react';
-import type { FaqItem } from '../data/seoPages';
+import type { LocalizedString } from '../types/i18nContent';
+import type { Lang } from '../i18n/LanguageContext';
 
-interface JsonLdFaqProps {
-  faqItems: FaqItem[];
+interface LocalizedFaqItem {
+  question: LocalizedString;
+  answer: LocalizedString;
 }
 
-export const JsonLdFaq: React.FC<JsonLdFaqProps> = ({ faqItems }) => {
+interface JsonLdFaqProps {
+  faqItems: LocalizedFaqItem[];
+  lang: Lang;
+}
+
+export const JsonLdFaq: React.FC<JsonLdFaqProps> = ({ faqItems, lang }) => {
   if (!faqItems || faqItems.length === 0) return null;
 
   const schemaData = {
@@ -13,10 +20,10 @@ export const JsonLdFaq: React.FC<JsonLdFaqProps> = ({ faqItems }) => {
     '@type': 'FAQPage',
     mainEntity: faqItems.map((item) => ({
       '@type': 'Question',
-      name: item.question,
+      name: item.question[lang],
       acceptedAnswer: {
         '@type': 'Answer',
-        text: item.answer,
+        text: item.answer[lang],
       },
     })),
   };

@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import type { ParsedResult } from '../types/ubl';
+import type { TabularData } from '../types/generic';
 import { exportToExcel } from '../utils/excelGenerator';
+import { exportToCsv } from '../utils/csvGenerator';
+import { exportToPdf } from '../utils/pdfGenerator';
+import { useTranslation } from '../i18n/LanguageContext';
 import {
-  Download,
   AlertTriangle,
   CheckCircle2,
   RotateCcw,
   Info,
   Layers,
   FileText,
+  FileSpreadsheet,
+  FileType2,
 } from 'lucide-react';
 
 interface InvoicePreviewTableProps {
@@ -16,74 +21,127 @@ interface InvoicePreviewTableProps {
   onReset: () => void;
 }
 
+type ExportKind = 'excel' | 'csv' | 'pdf' | null;
+
+function toTabularData(parsedResult: ParsedResult, t: (key: string) => string): TabularData {
+  const headers = [
+    t('table.invoiceNo'), t('table.date'), t('table.supplier'), t('table.customer'),
+    t('table.lineNo'), t('table.itemName'), t('table.quantity'), t('table.unit'),
+    t('table.unitPrice'), t('table.lineAmount'), t('table.taxDetail'), t('table.warningNote'),
+  ];
+  const rows = parsedResult.allLineItems.map((item) => [
+    item.invoiceId,
+    item.issueDate,
+    `${item.supplierName} (${item.supplierVknType}: ${item.supplierVkn})`,
+    `${item.customerName} (${item.customerVknType}: ${item.customerVkn})`,
+    item.id,
+    item.name,
+    item.quantity,
+    item.unitCode,
+    item.unitPrice,
+    item.lineExtensionAmount,
+    item.taxDetails,
+    item.hasMismatch ? item.mismatchReason || '' : '',
+  ]);
+  return { headers, rows, unsupportedFiles: parsedResult.unsupportedFiles };
+}
+
 export const InvoicePreviewTable: React.FC<InvoicePreviewTableProps> = ({
   parsedResult,
   onReset,
 }) => {
+  const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<'lines' | 'summary' | 'missing'>('lines');
-  const [isExporting, setIsExporting] = useState(false);
+  const [exporting, setExporting] = useState<ExportKind>(null);
 
   const totalInvoices = parsedResult.invoices.length;
   const totalLines = parsedResult.allLineItems.length;
   const totalPayableSum = parsedResult.invoices.reduce((acc, inv) => acc + inv.payableAmount, 0);
   const totalWarnings = parsedResult.allLineItems.filter((i) => i.hasMismatch).length;
   const totalMissingFields = parsedResult.allMissingFields.length;
+  const timestamp = new Date().toISOString().slice(0, 10);
 
-  const handleExport = async () => {
+  const handleExport = async (kind: Exclude<ExportKind, null>) => {
     try {
-      setIsExporting(true);
-      await exportToExcel(parsedResult);
-    } catch (err) {
-      alert('Excel dosyası oluşturulurken bir hata meydana geldi.');
+      setExporting(kind);
+      if (kind === 'excel') {
+        await exportToExcel(parsedResult);
+      } else if (kind === 'csv') {
+        await exportToCsv(toTabularData(parsedResult, t), `eFatura_${timestamp}.csv`);
+      } else {
+        await exportToPdf(toTabularData(parsedResult, t), 'e-Fatura Export', `eFatura_${timestamp}.pdf`);
+      }
+    } catch {
+      alert('Export failed. Please try again.');
     } finally {
-      setIsExporting(false);
+      setExporting(null);
     }
   };
 
   return (
     <div className="w-full max-w-6xl mx-auto my-6 flex flex-col gap-6">
-      
+
       {/* Top Banner & Primary Action Header */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 mb-1">
             <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800">
               <CheckCircle2 className="w-3.5 h-3.5 mr-1" />
-              Başarıyla Ayrıştırıldı
+              {t('preview.parsedSuccessfully')}
             </span>
             {parsedResult.unsupportedFiles.length > 0 && (
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800">
                 <AlertTriangle className="w-3.5 h-3.5 mr-1" />
-                {parsedResult.unsupportedFiles.length} Dosya Atlandı
+                {t('preview.filesSkipped', { count: parsedResult.unsupportedFiles.length })}
               </span>
             )}
           </div>
-          <h2 className="text-xl font-extrabold text-slate-800">
-            Dönüştürme Tamamlandı
+          <h2 className="font-heading text-xl font-extrabold text-slate-800">
+            {t('preview.completedTitle')}
           </h2>
           <p className="text-xs text-slate-500 font-medium mt-0.5">
-            Sonuçları aşağıdaki sekmelerden inceleyebilir, ardından Excel (.xlsx) dosyanızı indirebilirsiniz.
+            {t('preview.completedSubtitle')}
           </p>
         </div>
 
-        <div className="flex items-center gap-3 w-full md:w-auto">
+        <div className="flex flex-wrap items-center gap-2 w-full md:w-auto">
           <button
             onClick={onReset}
             type="button"
-            className="px-4 py-2.5 rounded-xl border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold text-sm transition-colors flex items-center justify-center gap-2 shrink-0"
+            className="px-4 py-2.5 rounded-lg border border-slate-300 text-slate-700 hover:bg-slate-50 font-semibold text-sm transition-colors flex items-center justify-center gap-2 shrink-0"
           >
             <RotateCcw className="w-4 h-4" />
-            <span>Yeni Yükleme</span>
+            <span>{t('preview.newUpload')}</span>
           </button>
-          
+
           <button
-            onClick={handleExport}
-            disabled={isExporting}
+            onClick={() => handleExport('excel')}
+            disabled={exporting !== null}
             type="button"
-            className="flex-1 md:flex-none px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 transition-all flex items-center justify-center gap-2"
+            className="px-4 py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2 border-t border-white/20"
           >
-            <Download className="w-4 h-4" />
-            <span>{isExporting ? 'Hazırlanıyor...' : 'Excel İndir (.xlsx)'}</span>
+            <FileSpreadsheet className="w-4 h-4" />
+            <span>{exporting === 'excel' ? t('preview.preparing') : t('preview.downloadExcel')}</span>
+          </button>
+
+          <button
+            onClick={() => handleExport('csv')}
+            disabled={exporting !== null}
+            type="button"
+            className="px-4 py-2.5 rounded-lg bg-blue-900 hover:bg-blue-950 text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2"
+          >
+            <FileText className="w-4 h-4" />
+            <span>{exporting === 'csv' ? t('preview.preparing') : t('preview.downloadCsv')}</span>
+          </button>
+
+          <button
+            onClick={() => handleExport('pdf')}
+            disabled={exporting !== null}
+            type="button"
+            className="px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2"
+          >
+            <FileType2 className="w-4 h-4" />
+            <span>{exporting === 'pdf' ? t('preview.preparing') : t('preview.downloadPdf')}</span>
           </button>
         </div>
       </div>
@@ -91,28 +149,28 @@ export const InvoicePreviewTable: React.FC<InvoicePreviewTableProps> = ({
       {/* KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-400 block mb-1">Fatura Sayısı</span>
+          <span className="text-xs font-semibold text-slate-400 block mb-1">{t('preview.kpiInvoiceCount')}</span>
           <span className="text-2xl font-extrabold text-slate-800">{totalInvoices}</span>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-400 block mb-1">Toplam Kalem Satırı</span>
-          <span className="text-2xl font-extrabold text-blue-600">{totalLines}</span>
+          <span className="text-xs font-semibold text-slate-400 block mb-1">{t('preview.kpiLineCount')}</span>
+          <span className="text-2xl font-extrabold text-blue-900">{totalLines}</span>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-400 block mb-1">Ödenecek Genel Toplam</span>
+          <span className="text-xs font-semibold text-slate-400 block mb-1">{t('preview.kpiTotalPayable')}</span>
           <span className="text-xl font-extrabold text-slate-900">
             {totalPayableSum.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} TL
           </span>
         </div>
         <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-400 block mb-1">Hesap Uyarısı</span>
+          <span className="text-xs font-semibold text-slate-400 block mb-1">{t('preview.kpiWarnings')}</span>
           <div className="flex items-center gap-2">
             <span className={`text-2xl font-extrabold ${totalWarnings > 0 ? 'text-amber-600' : 'text-slate-800'}`}>
               {totalWarnings}
             </span>
             {totalWarnings > 0 && (
               <span className="text-[11px] px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold">
-                Sarı İşaretlendi
+                {t('preview.markedYellow')}
               </span>
             )}
           </div>
@@ -121,64 +179,64 @@ export const InvoicePreviewTable: React.FC<InvoicePreviewTableProps> = ({
 
       {/* Tabs & Table Container */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
-        
+
         {/* Navigation Tabs */}
         <div className="flex items-center gap-1 p-2 bg-slate-100/70 border-b border-slate-200 overflow-x-auto">
           <button
             onClick={() => setActiveTab('lines')}
             className={`px-4 py-2 rounded-lg font-semibold text-xs transition-all flex items-center gap-2 whitespace-nowrap ${
               activeTab === 'lines'
-                ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                ? 'bg-white text-blue-900 shadow-xs border border-slate-200'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Layers className="w-4 h-4" />
-            <span>Fatura Detayı ({totalLines} Kalem)</span>
+            <span>{t('preview.tabDetail', { count: totalLines })}</span>
           </button>
 
           <button
             onClick={() => setActiveTab('summary')}
             className={`px-4 py-2 rounded-lg font-semibold text-xs transition-all flex items-center gap-2 whitespace-nowrap ${
               activeTab === 'summary'
-                ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                ? 'bg-white text-blue-900 shadow-xs border border-slate-200'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <FileText className="w-4 h-4" />
-            <span>Özet ({totalInvoices} Fatura)</span>
+            <span>{t('preview.tabSummary', { count: totalInvoices })}</span>
           </button>
 
           <button
             onClick={() => setActiveTab('missing')}
             className={`px-4 py-2 rounded-lg font-semibold text-xs transition-all flex items-center gap-2 whitespace-nowrap ${
               activeTab === 'missing'
-                ? 'bg-white text-blue-700 shadow-xs border border-slate-200'
+                ? 'bg-white text-blue-900 shadow-xs border border-slate-200'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
             <Info className="w-4 h-4" />
-            <span>Eksik Alanlar ({totalMissingFields})</span>
+            <span>{t('preview.tabMissing', { count: totalMissingFields })}</span>
           </button>
         </div>
 
-        {/* Tab 1: Fatura Detayı (Kalemler) */}
+        {/* Tab 1: Line items */}
         {activeTab === 'lines' && (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
                 <tr className="bg-slate-900 text-white font-semibold">
-                  <th className="p-3">Fatura No</th>
-                  <th className="p-3">Tarih</th>
-                  <th className="p-3">Satıcı Ünvanı / VKN</th>
-                  <th className="p-3">Alıcı Ünvanı / VKN</th>
-                  <th className="p-3">Kalem No</th>
-                  <th className="p-3">Ürün / Hizmet Adı</th>
-                  <th className="p-3 text-right">Miktar</th>
-                  <th className="p-3">Birim</th>
-                  <th className="p-3 text-right">Birim Fiyat</th>
-                  <th className="p-3 text-right">Satır Tutarı</th>
-                  <th className="p-3">Vergi Detayı</th>
-                  <th className="p-3">Uyarı / Not</th>
+                  <th className="p-3">{t('table.invoiceNo')}</th>
+                  <th className="p-3">{t('table.date')}</th>
+                  <th className="p-3">{t('table.supplier')}</th>
+                  <th className="p-3">{t('table.customer')}</th>
+                  <th className="p-3">{t('table.lineNo')}</th>
+                  <th className="p-3">{t('table.itemName')}</th>
+                  <th className="p-3 text-right">{t('table.quantity')}</th>
+                  <th className="p-3">{t('table.unit')}</th>
+                  <th className="p-3 text-right">{t('table.unitPrice')}</th>
+                  <th className="p-3 text-right">{t('table.lineAmount')}</th>
+                  <th className="p-3">{t('table.taxDetail')}</th>
+                  <th className="p-3">{t('table.warningNote')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
@@ -231,33 +289,33 @@ export const InvoicePreviewTable: React.FC<InvoicePreviewTableProps> = ({
           </div>
         )}
 
-        {/* Tab 2: Özet (Fatura Başına Tek Satır) */}
+        {/* Tab 2: Per-invoice summary */}
         {activeTab === 'summary' && (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs">
               <thead>
                 <tr className="bg-slate-900 text-white font-semibold">
-                  <th className="p-3">Dosya Adı</th>
-                  <th className="p-3">Fatura No</th>
-                  <th className="p-3">Tarih</th>
-                  <th className="p-3">Fatura Tipi</th>
-                  <th className="p-3">Satıcı Ünvanı / VKN</th>
-                  <th className="p-3">Alıcı Ünvanı / VKN</th>
-                  <th className="p-3 text-right">Mal/Hizmet Tutarı</th>
-                  <th className="p-3 text-right">Matrah</th>
-                  <th className="p-3 text-right">Genel Ödenecek</th>
-                  <th className="p-3">Durum</th>
+                  <th className="p-3">{t('table.fileName')}</th>
+                  <th className="p-3">{t('table.invoiceNo')}</th>
+                  <th className="p-3">{t('table.date')}</th>
+                  <th className="p-3">{t('table.invoiceType')}</th>
+                  <th className="p-3">{t('table.supplier')}</th>
+                  <th className="p-3">{t('table.customer')}</th>
+                  <th className="p-3 text-right">{t('table.goodsAmount')}</th>
+                  <th className="p-3 text-right">{t('table.taxBase')}</th>
+                  <th className="p-3 text-right">{t('table.totalPayable')}</th>
+                  <th className="p-3">{t('table.status')}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
                 {parsedResult.invoices.map((inv, idx) => (
                   <tr key={idx} className="hover:bg-slate-50">
                     <td className="p-3 text-slate-500 font-mono text-[11px]">{inv.fileName}</td>
-                    <td className="p-3 font-bold text-blue-700">{inv.invoiceId}</td>
+                    <td className="p-3 font-bold text-blue-900">{inv.invoiceId}</td>
                     <td className="p-3 whitespace-nowrap">{inv.issueDate}</td>
                     <td className="p-3">
                       <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">
-                        {inv.profileId || 'STANDART'}
+                        {inv.profileId || 'STANDARD'}
                       </span>
                     </td>
                     <td className="p-3 font-medium">
@@ -280,11 +338,11 @@ export const InvoicePreviewTable: React.FC<InvoicePreviewTableProps> = ({
                     <td className="p-3">
                       {inv.hasWarnings ? (
                         <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800 font-semibold flex items-center gap-1 w-fit">
-                          <AlertTriangle className="w-3 h-3" /> Uyarı Var
+                          <AlertTriangle className="w-3 h-3" /> {t('table.statusWarning')}
                         </span>
                       ) : (
                         <span className="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 font-semibold flex items-center gap-1 w-fit">
-                          <CheckCircle2 className="w-3 h-3" /> Tam Uyumlu
+                          <CheckCircle2 className="w-3 h-3" /> {t('table.statusOk')}
                         </span>
                       )}
                     </td>
@@ -295,30 +353,30 @@ export const InvoicePreviewTable: React.FC<InvoicePreviewTableProps> = ({
           </div>
         )}
 
-        {/* Tab 3: Eksik Alanlar */}
+        {/* Tab 3: Missing fields */}
         {activeTab === 'missing' && (
           <div className="p-6">
             {parsedResult.allMissingFields.length === 0 ? (
               <div className="text-center py-8 text-slate-500">
                 <CheckCircle2 className="w-10 h-10 text-emerald-500 mx-auto mb-2" />
-                <p className="font-bold text-slate-700">Tüm Zorunlu Alanlar Eksiksiz</p>
-                <p className="text-xs">Yüklenen hiçbir XML dosyasında eksik zorunlu alana rastlanmadı.</p>
+                <p className="font-bold text-slate-700">{t('preview.noMissingFieldsTitle')}</p>
+                <p className="text-xs">{t('preview.noMissingFieldsSubtitle')}</p>
               </div>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse text-xs">
                   <thead>
                     <tr className="bg-slate-100 text-slate-700 font-bold border-b border-slate-200">
-                      <th className="p-3">Fatura No</th>
-                      <th className="p-3">Kalem No</th>
-                      <th className="p-3">Eksik Alan</th>
-                      <th className="p-3">Açıklama</th>
+                      <th className="p-3">{t('table.missingInvoiceNo')}</th>
+                      <th className="p-3">{t('table.missingLineNo')}</th>
+                      <th className="p-3">{t('table.missingFieldName')}</th>
+                      <th className="p-3">{t('table.missingDescription')}</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
                     {parsedResult.allMissingFields.map((mf, idx) => (
                       <tr key={idx} className="hover:bg-slate-50">
-                        <td className="p-3 font-mono font-bold text-blue-700">{mf.invoiceId}</td>
+                        <td className="p-3 font-mono font-bold text-blue-900">{mf.invoiceId}</td>
                         <td className="p-3 font-mono">{mf.lineId || '-'}</td>
                         <td className="p-3 font-semibold text-rose-700">{mf.field}</td>
                         <td className="p-3 text-slate-600">{mf.description}</td>
