@@ -5,7 +5,7 @@ import { SEO_PAGES } from './data/seoPages';
 import { GUIDES } from './data/guides';
 import { SoftwareAppJsonLd } from './components/SoftwareAppJsonLd';
 import { HowToJsonLd } from './components/HowToJsonLd';
-import { LanguageProvider, useTranslation } from './i18n/LanguageContext';
+import { LanguageProvider, useTranslation, type Lang } from './i18n/LanguageContext';
 import { FileQuestion, Loader2 } from 'lucide-react';
 
 // Code Splitting — Lazy Load Pages
@@ -28,34 +28,32 @@ const PrivacyPolicyPage = lazy(() =>
   import('./pages/PrivacyPolicyPage').then((m) => ({ default: m.PrivacyPolicyPage }))
 );
 
-function AppShell() {
+interface AppShellProps {
+  pathname: string;
+  navigatePath: (path: string) => void;
+}
+
+function AppShell({ pathname, navigatePath }: AppShellProps) {
   const { t, lang } = useTranslation();
-  const [pathname, setPathname] = useState<string>(() => {
-    return typeof window !== 'undefined' ? window.location.pathname : '/';
-  });
 
+  // Keep the <html lang> attribute in sync — never set correctly before (index.html hardcodes
+  // lang="en" and nothing updated it client-side), matters for both SEO and accessibility.
   useEffect(() => {
-    const handlePopState = () => {
-      setPathname(window.location.pathname);
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, []);
-
-  const navigatePath = (path: string) => {
-    const targetPath = path.startsWith('/') ? path : `/${path}`;
-    setPathname(targetPath);
-    window.history.pushState({}, '', targetPath);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   const handleNavigateSlug = (slug: string) => {
-    navigatePath(slug);
+    // Central injection point: every internal link in the app goes through this function, so
+    // prefixing here is the only place language-aware routing needs to happen.
+    navigatePath(lang === 'tr' ? `tr/${slug}` : slug);
   };
 
-  // Route Matching Logic
-  const normalizedPath = decodeURIComponent(pathname).replace(/^\//, '').replace(/\/$/, '');
+  // Route Matching Logic — strip a leading `tr/` (or bare `tr`) segment before matching so the
+  // rest of this logic is identical for both languages. `pathname` itself (prefix intact) is kept
+  // for anything that needs the real, self-referential URL (e.g. SoftwareAppJsonLd's `url` below).
+  const decodedPath = decodeURIComponent(pathname).replace(/^\//, '').replace(/\/$/, '');
+  const normalizedPath =
+    decodedPath === 'tr' ? '' : decodedPath.startsWith('tr/') ? decodedPath.slice(3) : decodedPath;
 
   // 1. Check Validator Route
   const isValidatorRoute = normalizedPath === 'e-fatura-xml-dogrulama';
@@ -146,7 +144,7 @@ function AppShell() {
                 {t('app.error404Desc')}
               </p>
               <button
-                onClick={() => navigatePath('/')}
+                onClick={() => handleNavigateSlug('')}
                 className="px-5 py-2.5 rounded-lg bg-blue-900 hover:bg-blue-950 text-white font-bold text-xs shadow-sm transition-all"
               >
                 {t('app.backToHome')}
@@ -165,9 +163,40 @@ function AppShell() {
 }
 
 export function App() {
+  const [pathname, setPathname] = useState<string>(() => {
+    return typeof window !== 'undefined' ? window.location.pathname : '/';
+  });
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setPathname(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigatePath = (path: string) => {
+    const targetPath = path.startsWith('/') ? path : `/${path}`;
+    setPathname(targetPath);
+    window.history.pushState({}, '', targetPath);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Language is derived from the URL, not localStorage — the /tr/ prefix is the single source of
+  // truth so prerendered HTML, hreflang, and the client always agree on which language a URL means.
+  const strippedPath = decodeURIComponent(pathname).replace(/^\//, '');
+  const lang: Lang = strippedPath === 'tr' || strippedPath.startsWith('tr/') ? 'tr' : 'en';
+
+  const setLang = (nextLang: Lang) => {
+    const rest =
+      strippedPath === 'tr' ? '' : strippedPath.startsWith('tr/') ? strippedPath.slice(3) : strippedPath;
+    navigatePath(nextLang === 'tr' ? `/tr/${rest}` : `/${rest}`);
+  };
+
   return (
-    <LanguageProvider>
-      <AppShell />
+    <LanguageProvider lang={lang} setLang={setLang}>
+      <AppShell pathname={pathname} navigatePath={navigatePath} />
     </LanguageProvider>
   );
 }

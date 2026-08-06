@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
-    <external-path name="my_images" path="." />
-    <cache-path name="my_cache_images" path="." />
+    <!-- Scoped to just the cache dir — the only place nativeDownload.ts (Directory.Cache) ever
+         writes exported files. The default Capacitor boilerplate also exposed the entire external
+         storage root via FileProvider, which was unused and unnecessarily broad. -->
+    <cache-path name="exported_files" path="." />
 </paths>

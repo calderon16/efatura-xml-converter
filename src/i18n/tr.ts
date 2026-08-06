@@ -191,7 +191,7 @@ export const tr: Record<keyof typeof en, string> = {
   'privacy.s2Item3Label': 'Cihaz ve İzinler:',
   'privacy.s2Item3Body': 'Uygulama cihazınızın kişisel verilerine, kişilerine veya konumuna erişim talep etmez. Mobil sürümlerde sadece dönüştürülen Excel/CSV/PDF dosyalarını kaydetmeniz ve paylaşmanız için yerel dosya depolama izni kullanılır.',
   'privacy.s3Title': '3. Çerezler (Cookies) ve Analitik',
-  'privacy.s3Body': 'Web sitemizde kullanıcı oturumunu takip eden reklam çerezleri veya üçüncü taraf takip mekanizmaları kullanılmamaktadır. Sadece uygulamanın temel çalışması için gerekli olan tarayıcı yerel hafızası (LocalStorage) geçici tercihleri tutmak amacıyla kullanılabilir.',
+  'privacy.s3Body': 'Web sitemizde sizi bireysel olarak tanımlayan veya oturumlar arasında takip eden reklam çerezleri ya da herhangi bir izleme mekanizması kullanılmamaktadır. Toplu trafik istatistikleri (toplam ziyaret, popüler sayfalar gibi) için Cloudflare Web Analytics kullanıyoruz — bu araç tasarımı gereği çerez kullanmaz, cihazınıza hiçbir şey kaydetmez ve etkinliği kişisel olarak size bağlayamaz.',
   'privacy.s4Title': '4. KVKK ve GDPR Uyum Beyanı',
   'privacy.s4Body': '6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve Avrupa Birliği Genel Veri Koruma Tüzüğü (GDPR) kapsamında; tarafımızca kişisel veri toplanmadığı, işlenmediği ve üçüncü şahıslara aktarılmadığı için Veri Sorumlusu sıfatıyla herhangi bir veri işleme faaliyeti yürütülmemektedir.',
   'privacy.s5Title': '5. İletişim',

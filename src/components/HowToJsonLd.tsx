@@ -1,4 +1,5 @@
 import React from 'react';
+import { safeJsonLdString } from '../utils/safeJsonLd';
 
 export interface HowToStepItem {
   name: string;
@@ -34,7 +35,7 @@ export const HowToJsonLd: React.FC<HowToJsonLdProps> = ({ name, description, ste
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLdString(schemaData) }}
     />
   );
 };

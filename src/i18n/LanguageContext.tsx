@@ -1,11 +1,10 @@
-import React, { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import React, { createContext, useContext, useCallback, useMemo } from 'react';
 import { en } from './en';
 import { tr } from './tr';
 
 export type Lang = 'en' | 'tr';
 
 const DICTS: Record<Lang, Record<string, string>> = { en, tr };
-const STORAGE_KEY = 'schemaflow_lang';
 
 interface LanguageContextValue {
   lang: Lang;
@@ -15,22 +14,13 @@ interface LanguageContextValue {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-function readInitialLang(): Lang {
-  if (typeof window === 'undefined') return 'en';
-  const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored === 'tr' || stored === 'en' ? stored : 'en';
+interface LanguageProviderProps {
+  lang: Lang;
+  setLang: (lang: Lang) => void;
+  children: React.ReactNode;
 }
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLangState] = useState<Lang>(readInitialLang);
-
-  const setLang = useCallback((next: Lang) => {
-    setLangState(next);
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem(STORAGE_KEY, next);
-    }
-  }, []);
-
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({ lang, setLang, children }) => {
   const t = useCallback(
     (key: keyof typeof en, vars?: Record<string, string | number>) => {
       const dict = DICTS[lang];

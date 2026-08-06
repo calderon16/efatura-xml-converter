@@ -1,4 +1,5 @@
 import React from 'react';
+import { safeJsonLdString } from '../utils/safeJsonLd';
 
 interface SoftwareAppJsonLdProps {
   name: string;
@@ -29,7 +30,7 @@ export const SoftwareAppJsonLd: React.FC<SoftwareAppJsonLdProps> = ({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLdString(schemaData) }}
     />
   );
 };

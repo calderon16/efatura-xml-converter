@@ -29,44 +29,50 @@ const GUIDE_SLUGS = [
 const BASE_URL = 'https://efatura-xml-converter.calderon-hs91.workers.dev';
 const currentDate = new Date().toISOString().slice(0, 10);
 
-const staticRoutes = [
-  '/',
-  '/xml-to-excel/',
-  '/e-fatura-xml-dogrulama/',
-  '/rehberler/',
-  '/gizlilik-politikasi/',
+// Path relative to the site root, no leading slash, trailing slash included ('' means the root).
+// Every route here gets mirrored at both the unprefixed (English) URL and the /tr/ (Turkish) URL —
+// see docs/DECISIONS.md's hreflang ADR for why: client-side language toggles are invisible to
+// crawlers, so Turkish content needs its own indexable URL.
+interface RouteEntry {
+  path: string;
+  priority: string;
+  changefreq: string;
+}
+
+const routes: RouteEntry[] = [
+  { path: '', priority: '1.0', changefreq: 'weekly' },
+  { path: 'xml-to-excel/', priority: '0.9', changefreq: 'weekly' },
+  { path: 'e-fatura-xml-dogrulama/', priority: '0.9', changefreq: 'weekly' },
+  { path: 'rehberler/', priority: '0.9', changefreq: 'weekly' },
+  { path: 'gizlilik-politikasi/', priority: '0.9', changefreq: 'weekly' },
+  ...SEO_SLUGS.map((slug) => ({ path: `${slug}/`, priority: '0.8', changefreq: 'weekly' })),
+  ...GUIDE_SLUGS.map((slug) => ({ path: `rehberler/${slug}/`, priority: '0.7', changefreq: 'weekly' })),
 ];
 
-const allUrls = [
-  ...staticRoutes.map((route) => ({
-    loc: route === '/' ? `${BASE_URL}/` : `${BASE_URL}${route}`,
-    priority: route === '/' ? '1.0' : '0.9',
-    changefreq: 'weekly',
-  })),
-  ...SEO_SLUGS.map((slug) => ({
-    loc: `${BASE_URL}/${slug}/`,
-    priority: '0.8',
-    changefreq: 'weekly',
-  })),
-  ...GUIDE_SLUGS.map((slug) => ({
-    loc: `${BASE_URL}/rehberler/${slug}/`,
-    priority: '0.7',
-    changefreq: 'weekly',
-  })),
-];
+const enUrl = (p: string) => (p === '' ? `${BASE_URL}/` : `${BASE_URL}/${p}`);
+const trUrl = (p: string) => (p === '' ? `${BASE_URL}/tr/` : `${BASE_URL}/tr/${p}`);
+
+function urlBlock(loc: string, route: RouteEntry, enHref: string, trHref: string): string {
+  return `  <url>
+    <loc>${loc}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>${route.changefreq}</changefreq>
+    <priority>${route.priority}</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${enHref}" />
+    <xhtml:link rel="alternate" hreflang="tr" href="${trHref}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${enHref}" />
+  </url>`;
+}
+
+const urlBlocks = routes.flatMap((route) => {
+  const en = enUrl(route.path);
+  const tr = trUrl(route.path);
+  return [urlBlock(en, route, en, tr), urlBlock(tr, route, en, tr)];
+});
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allUrls
-  .map(
-    (url) => `  <url>
-    <loc>${url.loc}</loc>
-    <lastmod>${currentDate}</lastmod>
-    <changefreq>${url.changefreq}</changefreq>
-    <priority>${url.priority}</priority>
-  </url>`
-  )
-  .join('\n')}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urlBlocks.join('\n')}
 </urlset>
 `;
 
@@ -75,4 +81,4 @@ const __dirname = path.dirname(__filename);
 const outputPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
 
 fs.writeFileSync(outputPath, sitemapXml, 'utf-8');
-console.log(`✅ Sitemap successfully generated at public/sitemap.xml with ${allUrls.length} trailing slash URLs!`);
+console.log(`✅ Sitemap successfully generated at public/sitemap.xml with ${urlBlocks.length} URLs (${routes.length} routes × EN+TR) and hreflang alternates!`);

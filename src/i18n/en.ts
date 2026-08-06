@@ -189,7 +189,7 @@ export const en = {
   'privacy.s2Item3Label': 'Device and Permissions:',
   'privacy.s2Item3Body': "The app does not request access to your device's personal data, contacts, or location. In mobile versions, local file storage permission is used only so you can save and share the converted Excel/CSV/PDF files.",
   'privacy.s3Title': '3. Cookies and Analytics',
-  'privacy.s3Body': "Our website does not use advertising cookies or third-party tracking mechanisms that track your session. Only the browser's local storage (LocalStorage), required for the app's basic operation, may be used to hold temporary preferences.",
+  'privacy.s3Body': 'Our website does not use advertising cookies or any tracking mechanism that identifies you individually or follows you across sessions. We use Cloudflare Web Analytics for aggregate traffic statistics (e.g. total visits, popular pages) — it is cookieless by design, sets nothing on your device, and cannot tie activity back to you personally.',
   'privacy.s4Title': '4. KVKK and GDPR Compliance Statement',
   'privacy.s4Body': 'Under Turkey\'s Law on the Protection of Personal Data No. 6698 (KVKK) and the EU General Data Protection Regulation (GDPR), since we do not collect, process, or transfer any personal data to third parties, we do not carry out any data-processing activity in the capacity of a Data Controller.',
   'privacy.s5Title': '5. Contact',

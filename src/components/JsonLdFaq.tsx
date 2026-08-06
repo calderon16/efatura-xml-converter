@@ -1,6 +1,7 @@
 import React from 'react';
 import type { LocalizedString } from '../types/i18nContent';
 import type { Lang } from '../i18n/LanguageContext';
+import { safeJsonLdString } from '../utils/safeJsonLd';
 
 interface LocalizedFaqItem {
   question: LocalizedString;
@@ -31,7 +32,7 @@ export const JsonLdFaq: React.FC<JsonLdFaqProps> = ({ faqItems, lang }) => {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+      dangerouslySetInnerHTML={{ __html: safeJsonLdString(schemaData) }}
     />
   );
 };
