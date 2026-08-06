@@ -20,7 +20,7 @@ export interface GuideArticle {
   author: LocalizedString;
   summary: LocalizedString;
   sections: GuideSection[];
-  ctaTool: 'excel' | 'validator';
+  ctaTool: 'excel' | 'validator' | 'image' | 'document';
   ctaText: LocalizedString;
   faqItems?: GuideFaqItem[];
 }
@@ -462,6 +462,117 @@ export const GUIDES: GuideArticle[] = [
         answer: {
           en: 'Yes. Our web app is mobile-friendly — you can upload an XML from your phone and view the results.',
           tr: 'Evet. Web uygulamamız mobil uyumludur, telefonunuzdan XML yükleyip sonuçları görüntüleyebilirsiniz.',
+        },
+      },
+    ],
+  },
+  {
+    slug: 'png-jpg-webp-farki-hangi-format-ne-zaman-kullanilmali',
+    title: {
+      en: "PNG vs JPG vs WebP: What's the Difference? Which Format Should You Use?",
+      tr: 'PNG, JPG ve WebP Arasındaki Fark Nedir? Hangi Format Ne Zaman Kullanılmalı?',
+    },
+    metaDescription: {
+      en: 'A practical comparison of PNG, JPG, and WebP image formats — compression, transparency, file size, and browser support — so you pick the right one every time.',
+      tr: 'PNG, JPG ve WebP görsel formatlarının sıkıştırma, saydamlık, dosya boyutu ve tarayıcı desteği açısından pratik karşılaştırması — her seferinde doğru formatı seçin.',
+    },
+    h1: {
+      en: 'PNG vs JPG vs WebP: Choosing the Right Image Format',
+      tr: 'PNG, JPG ve WebP: Doğru Görsel Formatını Seçmek',
+    },
+    date: '2026-08-06',
+    readTime: { en: '5 min read', tr: '5 dk okuma' },
+    author: { en: 'Product & Design Team', tr: 'Ürün ve Tasarım Ekibi' },
+    summary: {
+      en: 'A side-by-side look at how PNG, JPG, and WebP actually differ under the hood, and simple rules of thumb for which one to reach for depending on your image.',
+      tr: 'PNG, JPG ve WebP formatlarının arka planda gerçekte nasıl farklılaştığına dair karşılaştırmalı bir bakış ve görselinize göre hangisini seçmeniz gerektiğine dair basit kurallar.',
+    },
+    sections: [
+      {
+        heading: {
+          en: 'PNG: Lossless Quality, Best for Graphics and Transparency',
+          tr: 'PNG: Kayıpsız Kalite, Grafik ve Saydamlık için En İyisi',
+        },
+        paragraphs: [
+          {
+            en: "PNG (Portable Network Graphics) uses lossless compression, meaning no image data is discarded when the file is saved — every pixel stays exactly as it was. This makes PNG the right choice for logos, icons, screenshots, and any graphic with sharp edges or text, where JPG's compression artifacts would blur fine details.",
+            tr: 'PNG (Portable Network Graphics), kayıpsız sıkıştırma kullanır; yani dosya kaydedilirken hiçbir görsel veri atılmaz — her piksel olduğu gibi kalır. Bu, PNG\'yi logo, ikon, ekran görüntüsü ve keskin kenarlı veya metin içeren her türlü grafik için doğru seçim yapar; bu tür görsellerde JPG\'nin sıkıştırma bozulmaları ince detayları bulanıklaştırır.',
+          },
+          {
+            en: "The trade-off is file size: because nothing is thrown away, PNG files are typically much larger than a JPG of the same photo. PNG also supports a full alpha channel, so it's the only one of the three that gives you true transparent backgrounds.",
+            tr: 'Bunun bedeli dosya boyutudur: hiçbir şey atılmadığı için PNG dosyaları, aynı fotoğrafın JPG haline göre genelde çok daha büyüktür. PNG ayrıca tam bir alfa kanalını destekler, yani üçü arasında gerçek saydam arka plan sunan tek formattır.',
+          },
+        ],
+      },
+      {
+        heading: {
+          en: 'JPG: Small File Sizes for Photos, No Transparency',
+          tr: 'JPG: Fotoğraflar için Küçük Dosya Boyutu, Saydamlık Yok',
+        },
+        paragraphs: [
+          {
+            en: 'JPG (or JPEG) uses lossy compression — it selectively discards image data that the human eye is least likely to notice, which is why it achieves much smaller file sizes than PNG. This makes it the standard choice for photographs, where gradual color gradients hide the compression well.',
+            tr: 'JPG (veya JPEG), kayıplı sıkıştırma kullanır — insan gözünün fark etme ihtimali en düşük olan görsel verileri seçici olarak atar, bu yüzden PNG\'ye göre çok daha küçük dosya boyutlarına ulaşır. Bu da onu, kademeli renk geçişlerinin sıkıştırmayı iyi gizlediği fotoğraflar için standart seçim yapar.',
+          },
+          {
+            en: "The downside: JPG doesn't support transparency at all (a transparent area is filled with white or black), and re-saving the same JPG multiple times gradually degrades quality due to repeated lossy compression — known as generation loss.",
+            tr: 'Dezavantajı: JPG saydamlığı hiç desteklemez (saydam alan beyaz veya siyahla doldurulur) ve aynı JPG dosyasını tekrar tekrar kaydetmek, tekrarlanan kayıplı sıkıştırma nedeniyle kaliteyi kademeli olarak düşürür — buna "nesil kaybı" denir.',
+          },
+        ],
+      },
+      {
+        heading: {
+          en: 'WebP: The Modern Format That Does Both',
+          tr: 'WebP: Her İkisini de Yapan Modern Format',
+        },
+        paragraphs: [
+          {
+            en: 'WebP is a newer format developed by Google that supports both lossy and lossless compression in a single container — plus full transparency, like PNG. In practice, WebP files are typically 25-35% smaller than a comparable JPG and significantly smaller than an equivalent PNG, at a similar visual quality.',
+            tr: 'WebP, Google tarafından geliştirilen daha yeni bir formattır ve tek bir dosya biçiminde hem kayıplı hem kayıpsız sıkıştırmayı destekler — üstelik PNG gibi tam saydamlığa da sahiptir. Pratikte WebP dosyaları, benzer görsel kalitede, karşılaştırılabilir bir JPG\'ye göre genelde %25-35 daha küçük, eşdeğer bir PNG\'ye göre ise belirgin şekilde daha küçüktür.',
+          },
+          {
+            en: "Browser support is now near-universal (all modern browsers), which is why it's become the default recommendation for web images — smaller files mean faster page loads. The main reason to still keep a PNG or JPG around is compatibility with older software or specific print/design workflows that don't yet accept WebP.",
+            tr: 'Tarayıcı desteği artık neredeyse evrensel (tüm modern tarayıcılar), bu yüzden web görselleri için varsayılan öneri haline geldi — daha küçük dosyalar daha hızlı sayfa yüklemesi demek. PNG veya JPG\'yi hâlâ elde tutmanın temel sebebi, henüz WebP kabul etmeyen eski yazılımlar veya belirli baskı/tasarım iş akışlarıyla uyumluluktur.',
+          },
+        ],
+      },
+      {
+        heading: {
+          en: 'Quick Decision Guide: Which Format Should You Pick?',
+          tr: 'Hızlı Karar Rehberi: Hangi Formatı Seçmelisiniz?',
+        },
+        paragraphs: [
+          {
+            en: 'Logo, icon, or screenshot with text → PNG (needs transparency or sharp edges). Photograph for a website or social media → WebP if the platform supports it, otherwise JPG. Photo you\'ll print or open in older desktop software → JPG. Any image with a transparent background → PNG or WebP, never JPG.',
+            tr: 'Logo, ikon veya metin içeren ekran görüntüsü → PNG (saydamlık veya keskin kenar gerekiyor). Web sitesi veya sosyal medya için fotoğraf → platform destekliyorsa WebP, desteklemiyorsa JPG. Baskı alacağınız veya eski masaüstü yazılımında açacağınız fotoğraf → JPG. Saydam arka planlı herhangi bir görsel → PNG veya WebP, asla JPG değil.',
+          },
+        ],
+      },
+    ],
+    ctaTool: 'image',
+    ctaText: {
+      en: 'Convert between PNG, JPG, and WebP instantly in your browser — no upload, no quality loss from a third-party server.',
+      tr: 'PNG, JPG ve WebP arasında tarayıcınızda anında dönüştürün — yükleme yok, üçüncü taraf sunucu kaynaklı kalite kaybı yok.',
+    },
+    faqItems: [
+      {
+        question: {
+          en: 'Does converting an image to a different format reduce its quality?',
+          tr: 'Bir görseli farklı bir formata dönüştürmek kalitesini düşürür mü?',
+        },
+        answer: {
+          en: 'Converting to a lossless format (PNG or lossless WebP) keeps quality intact. Converting to a lossy format (JPG or lossy WebP) discards some data, so quality only drops if you convert from an already-lossy source or lower the quality setting — converting a PNG to a high-quality WebP is generally safe.',
+          tr: 'Kayıpsız bir formata (PNG veya kayıpsız WebP) dönüştürmek kaliteyi korur. Kayıplı bir formata (JPG veya kayıplı WebP) dönüştürmek bir miktar veri attığı için kalite yalnızca zaten kayıplı bir kaynaktan dönüştürüyorsanız veya kalite ayarını düşürüyorsanız düşer — bir PNG\'yi yüksek kaliteli bir WebP\'ye dönüştürmek genelde güvenlidir.',
+        },
+      },
+      {
+        question: {
+          en: "Why doesn't my WebP image open in some programs?",
+          tr: 'WebP görselim neden bazı programlarda açılmıyor?',
+        },
+        answer: {
+          en: "WebP is newer than PNG and JPG, so a handful of older image viewers and design tools don't support it yet. If you run into this, converting the WebP back to PNG or JPG restores full compatibility.",
+          tr: 'WebP, PNG ve JPG\'den daha yeni bir format olduğu için birkaç eski görsel görüntüleyici ve tasarım aracı henüz onu desteklemiyor. Bununla karşılaşırsanız, WebP\'yi tekrar PNG veya JPG\'ye dönüştürmek tam uyumluluğu geri getirir.',
         },
       },
     ],

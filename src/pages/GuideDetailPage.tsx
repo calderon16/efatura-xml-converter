@@ -15,6 +15,8 @@ import {
   ChevronDown,
   ArrowLeft,
   ShieldCheck,
+  ImageIcon,
+  FileText,
 } from 'lucide-react';
 
 interface GuideDetailPageProps {
@@ -189,6 +191,22 @@ export const GuideDetailPage: React.FC<GuideDetailPageProps> = ({
               >
                 <ShieldCheck className="w-4 h-4" />
                 <span>{t('guide.validateXml')}</span>
+              </button>
+            ) : guide.ctaTool === 'image' ? (
+              <button
+                onClick={() => onNavigateSlug('image-converter')}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5"
+              >
+                <ImageIcon className="w-4 h-4" />
+                <span>{t('guide.goToImageConverter')}</span>
+              </button>
+            ) : guide.ctaTool === 'document' ? (
+              <button
+                onClick={() => onNavigateSlug('document-converter')}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-1.5"
+              >
+                <FileText className="w-4 h-4" />
+                <span>{t('guide.goToDocumentConverter')}</span>
               </button>
             ) : (
               <button
