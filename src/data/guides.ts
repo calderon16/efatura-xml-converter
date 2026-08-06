@@ -577,4 +577,115 @@ export const GUIDES: GuideArticle[] = [
       },
     ],
   },
+  {
+    slug: 'excel-pdf-word-arasinda-nasil-donusturme-yapilir',
+    title: {
+      en: 'How to Convert Between Excel, PDF, and Word — A Practical Guide',
+      tr: 'Excel, PDF ve Word Arasında Nasıl Dönüştürme Yapılır? — Pratik Rehber',
+    },
+    metaDescription: {
+      en: "Step-by-step guidance for converting Excel spreadsheets to PDF, extracting tables from PDF into Excel, and turning Word documents into PDF — plus what these conversions can't do.",
+      tr: "Excel tablolarını PDF'e dönüştürme, PDF'ten Excel'e tablo çıkarma ve Word belgelerini PDF'e çevirme adımları — bu dönüşümlerin yapamadıkları da dahil.",
+    },
+    h1: {
+      en: 'How to Convert Between Excel, PDF, and Word',
+      tr: 'Excel, PDF ve Word Arasında Nasıl Dönüştürme Yapılır',
+    },
+    date: '2026-08-06',
+    readTime: { en: '6 min read', tr: '6 dk okuma' },
+    author: { en: 'Product & Design Team', tr: 'Ürün ve Tasarım Ekibi' },
+    summary: {
+      en: 'A practical walkthrough of the three most common document conversions — Excel to PDF, PDF to Excel, and Word to PDF — including exactly when extraction-based conversion works well and when it doesn\'t.',
+      tr: "En sık ihtiyaç duyulan üç belge dönüşümünün — Excel'den PDF'e, PDF'ten Excel'e ve Word'den PDF'e — pratik anlatımı; çıkarma tabanlı dönüşümün ne zaman iyi çalıştığı ve ne zaman çalışmadığı dahil.",
+    },
+    sections: [
+      {
+        heading: {
+          en: 'Excel to PDF: Turning Spreadsheets into Shareable Reports',
+          tr: "Excel'den PDF'e: Tabloları Paylaşılabilir Raporlara Dönüştürme",
+        },
+        paragraphs: [
+          {
+            en: "The most common reason to convert an Excel file to PDF is sharing: a .xlsx file requires spreadsheet software to open and can shift formatting between different versions of Excel or Google Sheets, while a PDF renders identically everywhere and can't be accidentally edited. This makes PDF the standard choice for invoices, financial reports, and any spreadsheet you're sending outside your own team.",
+            tr: "Bir Excel dosyasını PDF'e dönüştürmenin en yaygın sebebi paylaşımdır: .xlsx dosyasının açılması bir tablolama programı gerektirir ve farklı Excel veya Google E-Tablolar sürümleri arasında biçimlendirme kayabilir; PDF ise her yerde aynı görünür ve yanlışlıkla düzenlenemez. Bu yüzden PDF, faturalar, finansal raporlar ve kendi ekibinizin dışına gönderdiğiniz her tablo için standart tercihtir.",
+          },
+          {
+            en: 'The conversion reads every row and column from your spreadsheet and lays it out as a table on PDF pages, preserving the header row and cell values. Multi-sheet workbooks and very wide tables are the two things to watch — a sheet with dozens of columns may need to be split or shrunk to fit a page width.',
+            tr: 'Dönüşüm, tablonuzdaki her satır ve sütunu okuyup PDF sayfalarında bir tablo olarak düzenler; başlık satırını ve hücre değerlerini korur. Çok sayfalı çalışma kitapları ve çok geniş tablolar dikkat edilmesi gereken iki noktadır — onlarca sütunu olan bir sayfa, sayfa genişliğine sığması için bölünmeye veya küçültülmeye ihtiyaç duyabilir.',
+          },
+        ],
+      },
+      {
+        heading: {
+          en: 'PDF to Excel: Extracting Tables Back Out of a PDF',
+          tr: "PDF'ten Excel'e: Tablo Verisini PDF'ten Geri Çıkarma",
+        },
+        paragraphs: [
+          {
+            en: 'This is the reverse and trickier problem: a bank statement, invoice, or report you only have as a PDF, but you need the numbers in a spreadsheet to actually work with them. This only works on PDFs that contain a real text layer — meaning the text was generated digitally (from Word, Excel, or a web page), not scanned in as a photo.',
+            tr: 'Bu, ters ve daha zor bir sorundur: elinizde yalnızca PDF olarak bulunan bir banka ekstresi, fatura veya rapor var, ama sayılarla gerçekten çalışabilmek için onları bir tabloya aktarmanız gerekiyor. Bu yalnızca gerçek bir metin katmanı içeren PDF\'lerde çalışır — yani metin dijital olarak üretilmiş olmalı (Word, Excel veya bir web sayfasından), fotoğraf olarak taranmış olmamalı.',
+          },
+          {
+            en: "A quick way to check before you even try: open the PDF and attempt to select and copy a line of text with your mouse. If you can highlight and copy it, there's a text layer and extraction will work. If your cursor can't select anything (the whole page behaves like a single image), it's a scanned document and needs OCR software instead — extraction-based tools, ours included, can't recover data that was never encoded as text in the first place.",
+            tr: 'Denemeden önce hızlıca kontrol etmenin bir yolu: PDF\'i açın ve fareyle bir metin satırını seçip kopyalamayı deneyin. Seçip kopyalayabiliyorsanız metin katmanı vardır ve çıkarma işe yarar. İmleciniz hiçbir şeyi seçemiyorsa (tüm sayfa tek bir görsel gibi davranıyorsa) bu taranmış bir belgedir ve bunun yerine OCR yazılımına ihtiyaç duyar — bizimki dahil çıkarma tabanlı araçlar, hiç metin olarak kodlanmamış veriyi geri getiremez.',
+          },
+        ],
+      },
+      {
+        heading: {
+          en: 'Word to PDF: Locking In Formatting for Final Documents',
+          tr: "Word'den PDF'e: Nihai Belgeler için Biçimlendirmeyi Sabitleme",
+        },
+        paragraphs: [
+          {
+            en: "Converting a .docx file to PDF is mainly about finality: contracts, CVs, and official letters are converted to PDF once they're ready to send, so the layout, fonts, and page breaks stay exactly as designed no matter what device or software opens it — unlike a .docx, which can reflow differently depending on the recipient's Word version and installed fonts.",
+            tr: "Bir .docx dosyasını PDF'e dönüştürmek esas olarak kesinlikle ilgilidir: sözleşmeler, özgeçmişler ve resmi yazılar, gönderilmeye hazır olduklarında PDF'e dönüştürülür; böylece düzen, yazı tipleri ve sayfa kesmeleri, hangi cihaz veya yazılımda açılırsa açılsın tam olarak tasarlandığı gibi kalır — alıcının Word sürümüne ve yüklü yazı tiplerine göre farklı şekillenebilen bir .docx'in aksine.",
+          },
+          {
+            en: "The conversion works by rendering your document's text and basic formatting (headings, bold, lists, tables) onto PDF pages. Very long documents are automatically split across multiple PDF pages, and highly complex layouts — multi-column text, embedded objects, tracked changes — are the cases most likely to shift slightly from the original.",
+            tr: 'Dönüşüm, belgenizin metnini ve temel biçimlendirmesini (başlıklar, kalın yazı, listeler, tablolar) PDF sayfalarına aktararak çalışır. Çok uzun belgeler otomatik olarak birden fazla PDF sayfasına bölünür; çok sütunlu metin, gömülü nesneler ve değişiklik takibi gibi son derece karmaşık düzenler ise orijinalinden en çok sapma ihtimali olan durumlardır.',
+          },
+        ],
+      },
+      {
+        heading: {
+          en: "What These Conversions Can't Do",
+          tr: 'Bu Dönüşümlerin Yapamadıkları',
+        },
+        paragraphs: [
+          {
+            en: "Two honest limitations worth knowing before you rely on any browser-based converter, ours included: scanned or image-only PDFs need OCR (optical character recognition) to extract text, which is a fundamentally different technology than reading an existing text layer — and PowerPoint isn't supported in either direction, since presentation slide layouts don't map cleanly onto the same extraction approach that works for spreadsheets and documents. Both are legitimate gaps, not bugs — a fully accurate solution for either would need server-side processing, which runs against the 100%-client-side, nothing-uploaded design of this tool.",
+            tr: "Herhangi bir tarayıcı tabanlı dönüştürücüye (bizimki dahil) güvenmeden önce bilinmesi gereken iki dürüst sınır var: taranmış veya yalnızca görsel içeren PDF'ler, metin çıkarmak için OCR (optik karakter tanıma) gerektirir — bu, mevcut bir metin katmanını okumaktan temelde farklı bir teknolojidir — ve PowerPoint her iki yönde de desteklenmez, çünkü sunum slayt düzenleri, tablolar ve belgeler için işe yarayan aynı çıkarma yaklaşımına temiz bir şekilde oturmaz. İkisi de gerçek birer sınırdır, hata değil — her ikisi için de tam doğru bir çözüm sunucu tarafı işleme gerektirir; bu da aracın %100 istemci taraflı, hiçbir şeyin yüklenmediği tasarımına aykırı olurdu.",
+          },
+        ],
+      },
+    ],
+    ctaTool: 'document',
+    ctaText: {
+      en: 'Convert Excel, PDF, and Word files instantly in your browser — no upload, no account, no file size limits imposed by a server.',
+      tr: 'Excel, PDF ve Word dosyalarını tarayıcınızda anında dönüştürün — yükleme yok, hesap yok, sunucu kaynaklı dosya boyutu sınırı yok.',
+    },
+    faqItems: [
+      {
+        question: {
+          en: 'Why did my PDF-to-Excel conversion come out empty?',
+          tr: "PDF'ten Excel'e dönüşümüm neden boş çıktı?",
+        },
+        answer: {
+          en: "This almost always means the PDF has no text layer — it's a scanned image rather than digitally generated text. Try selecting text in the PDF with your mouse first; if nothing highlights, extraction won't find any text to convert either.",
+          tr: "Bu neredeyse her zaman PDF'in metin katmanı olmadığı anlamına gelir — dijital olarak üretilmiş metin yerine taranmış bir görseldir. Önce fareyle PDF içinde metin seçmeyi deneyin; hiçbir şey vurgulanmıyorsa, çıkarma işlemi de dönüştürecek bir metin bulamaz.",
+        },
+      },
+      {
+        question: {
+          en: 'Can I convert a PowerPoint presentation with this tool?',
+          tr: 'Bu araçla bir PowerPoint sunumunu dönüştürebilir miyim?',
+        },
+        answer: {
+          en: "Not currently — PowerPoint conversion isn't supported in either direction, since slide-based layouts don't fit the same text-extraction approach used for spreadsheets and documents.",
+          tr: 'Şu an için hayır — PowerPoint dönüşümü hiçbir yönde desteklenmiyor, çünkü slayt tabanlı düzenler, tablo ve belgeler için kullanılan aynı metin çıkarma yaklaşımına uymuyor.',
+        },
+      },
+    ],
+  },
 ];

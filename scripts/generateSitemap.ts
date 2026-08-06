@@ -17,7 +17,7 @@ const SEO_SLUGS = [
   'e-fatura-kdv-detay-raporu',
 ];
 
-// 6 Guide Articles Slugs (100% Pure ASCII)
+// 7 Guide Articles Slugs (100% Pure ASCII)
 const GUIDE_SLUGS = [
   'ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi',
   'e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir',
@@ -25,6 +25,7 @@ const GUIDE_SLUGS = [
   'muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari',
   'e-fatura-xml-dosyasi-nasil-okunur-step-by-step',
   'png-jpg-webp-farki-hangi-format-ne-zaman-kullanilmali',
+  'excel-pdf-word-arasinda-nasil-donusturme-yapilir',
 ];
 
 const BASE_URL = 'https://schemaflowapp.com';
