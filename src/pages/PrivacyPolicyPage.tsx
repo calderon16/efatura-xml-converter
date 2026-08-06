@@ -35,7 +35,7 @@ export const PrivacyPolicyPage: React.FC<PrivacyPolicyPageProps> = ({ onNavigate
     const origin =
       typeof window !== 'undefined'
         ? window.location.origin
-        : 'https://efatura-xml-converter.calderon-hs91.workers.dev';
+        : 'https://schemaflowapp.com';
     canonicalEl.setAttribute('href', `${origin}/gizlilik-politikasi/`);
   }, [lang]);
 

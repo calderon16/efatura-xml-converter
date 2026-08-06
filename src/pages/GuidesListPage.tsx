@@ -31,7 +31,7 @@ export const GuidesListPage: React.FC<GuidesListPageProps> = ({
             ? 'e-Fatura, e-Arşiv, UBL-TR şema yapısı ve 2026 GİB mevzuatı hakkında güncel rehber makaleleri.'
             : "Up-to-date guide articles on e-Fatura, e-Arşiv, UBL-TR schema structure, and 2026 GİB regulations."
         }
-        url="https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler"
+        url="https://schemaflowapp.com/rehberler"
       />
 
       {/* Hero */}

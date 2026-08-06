@@ -51,7 +51,7 @@ export const ValidatorPage: React.FC<ValidatorPageProps> = ({ onNavigateSlug }) 
       <SoftwareAppJsonLd
         name={t('validator.title')}
         description={t('validator.metaDescription')}
-        url="https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-xml-dogrulama"
+        url="https://schemaflowapp.com/e-fatura-xml-dogrulama"
       />
 
       {/* Hero Badge */}

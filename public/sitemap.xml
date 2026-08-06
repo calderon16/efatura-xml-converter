@@ -1,117 +1,381 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/</loc>
+    <loc>https://schemaflowapp.com/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/xml-to-excel/</loc>
+    <loc>https://schemaflowapp.com/tr/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/xml-to-excel/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/xml-to-excel/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/xml-to-excel/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/xml-to-excel/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-xml-dogrulama/</loc>
+    <loc>https://schemaflowapp.com/tr/xml-to-excel/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/xml-to-excel/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/xml-to-excel/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/xml-to-excel/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/</loc>
+    <loc>https://schemaflowapp.com/e-fatura-xml-dogrulama/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-xml-dogrulama/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-xml-dogrulama/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-xml-dogrulama/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/gizlilik-politikasi/</loc>
+    <loc>https://schemaflowapp.com/tr/e-fatura-xml-dogrulama/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-xml-dogrulama/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-xml-dogrulama/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-xml-dogrulama/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-xml-excel-donusturucu/</loc>
+    <loc>https://schemaflowapp.com/rehberler/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/rehberler/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/gizlilik-politikasi/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/gizlilik-politikasi/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/gizlilik-politikasi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/gizlilik-politikasi/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/gizlilik-politikasi/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/gizlilik-politikasi/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/gizlilik-politikasi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/gizlilik-politikasi/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/image-converter/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/image-converter/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/image-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/image-converter/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/image-converter/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/image-converter/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/image-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/image-converter/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/document-converter/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/document-converter/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/document-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/document-converter/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/document-converter/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/document-converter/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/document-converter/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/document-converter/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/e-fatura-xml-excel-donusturucu/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-xml-excel-donusturucu/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-xml-excel-donusturucu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-xml-excel-donusturucu/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-excele-nasil-aktarilir/</loc>
+    <loc>https://schemaflowapp.com/tr/e-fatura-xml-excel-donusturucu/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-xml-excel-donusturucu/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-xml-excel-donusturucu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-xml-excel-donusturucu/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/ubl-tr-xml-okuyucu/</loc>
+    <loc>https://schemaflowapp.com/e-fatura-excele-nasil-aktarilir/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-excele-nasil-aktarilir/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-excele-nasil-aktarilir/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-excele-nasil-aktarilir/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-toplu-donusturme/</loc>
+    <loc>https://schemaflowapp.com/tr/e-fatura-excele-nasil-aktarilir/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-excele-nasil-aktarilir/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-excele-nasil-aktarilir/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-excele-nasil-aktarilir/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-arsiv-fatura-excel/</loc>
+    <loc>https://schemaflowapp.com/ubl-tr-xml-okuyucu/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/ubl-tr-xml-okuyucu/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/ubl-tr-xml-okuyucu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/ubl-tr-xml-okuyucu/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/fatura-xml-veri-cekme/</loc>
+    <loc>https://schemaflowapp.com/tr/ubl-tr-xml-okuyucu/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/ubl-tr-xml-okuyucu/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/ubl-tr-xml-okuyucu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/ubl-tr-xml-okuyucu/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/muhasebe-e-fatura-excel-aktarim/</loc>
+    <loc>https://schemaflowapp.com/e-fatura-toplu-donusturme/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-toplu-donusturme/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-toplu-donusturme/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-toplu-donusturme/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/ubl-invoice-to-excel/</loc>
+    <loc>https://schemaflowapp.com/tr/e-fatura-toplu-donusturme/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-toplu-donusturme/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-toplu-donusturme/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-toplu-donusturme/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/e-fatura-kdv-detay-raporu/</loc>
+    <loc>https://schemaflowapp.com/e-arsiv-fatura-excel/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-arsiv-fatura-excel/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-arsiv-fatura-excel/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-arsiv-fatura-excel/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/</loc>
+    <loc>https://schemaflowapp.com/tr/e-arsiv-fatura-excel/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-arsiv-fatura-excel/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-arsiv-fatura-excel/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-arsiv-fatura-excel/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/fatura-xml-veri-cekme/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/fatura-xml-veri-cekme/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/fatura-xml-veri-cekme/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/fatura-xml-veri-cekme/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/fatura-xml-veri-cekme/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/fatura-xml-veri-cekme/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/fatura-xml-veri-cekme/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/fatura-xml-veri-cekme/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/muhasebe-e-fatura-excel-aktarim/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/muhasebe-e-fatura-excel-aktarim/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/muhasebe-e-fatura-excel-aktarim/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/muhasebe-e-fatura-excel-aktarim/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/muhasebe-e-fatura-excel-aktarim/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/muhasebe-e-fatura-excel-aktarim/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/muhasebe-e-fatura-excel-aktarim/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/muhasebe-e-fatura-excel-aktarim/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/ubl-invoice-to-excel/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/ubl-invoice-to-excel/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/ubl-invoice-to-excel/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/ubl-invoice-to-excel/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/ubl-invoice-to-excel/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/ubl-invoice-to-excel/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/ubl-invoice-to-excel/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/ubl-invoice-to-excel/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/e-fatura-kdv-detay-raporu/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-kdv-detay-raporu/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-kdv-detay-raporu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-kdv-detay-raporu/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/e-fatura-kdv-detay-raporu/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/e-fatura-kdv-detay-raporu/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/e-fatura-kdv-detay-raporu/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/e-fatura-kdv-detay-raporu/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/</loc>
+    <loc>https://schemaflowapp.com/tr/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/ubl-tr-nedir-e-fatura-xml-standardi-aciklamasi/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/</loc>
+    <loc>https://schemaflowapp.com/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/</loc>
+    <loc>https://schemaflowapp.com/tr/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/e-fatura-ile-e-arsiv-fatura-arasindaki-fark-nedir/" />
   </url>
   <url>
-    <loc>https://efatura-xml-converter.calderon-hs91.workers.dev/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/</loc>
+    <loc>https://schemaflowapp.com/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/e-fatura-zorunlulugu-kimleri-kapsiyor-2026-guncel-sinirlar/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/muhasebede-kullanilan-dosya-formatlari-xml-csv-json-farklari/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/" />
+  </url>
+  <url>
+    <loc>https://schemaflowapp.com/tr/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://schemaflowapp.com/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://schemaflowapp.com/tr/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://schemaflowapp.com/rehberler/e-fatura-xml-dosyasi-nasil-okunur-step-by-step/" />
   </url>
 </urlset>

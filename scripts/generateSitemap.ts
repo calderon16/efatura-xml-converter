@@ -26,7 +26,7 @@ const GUIDE_SLUGS = [
   'e-fatura-xml-dosyasi-nasil-okunur-step-by-step',
 ];
 
-const BASE_URL = 'https://efatura-xml-converter.calderon-hs91.workers.dev';
+const BASE_URL = 'https://schemaflowapp.com';
 const currentDate = new Date().toISOString().slice(0, 10);
 
 // Path relative to the site root, no leading slash, trailing slash included ('' means the root).

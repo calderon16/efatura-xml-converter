@@ -69,7 +69,7 @@ export const GuideDetailPage: React.FC<GuideDetailPageProps> = ({
     const currentOrigin =
       typeof window !== 'undefined'
         ? window.location.origin
-        : 'https://efatura-xml-converter.calderon-hs91.workers.dev';
+        : 'https://schemaflowapp.com';
     canonicalEl.setAttribute('href', `${currentOrigin}/rehberler/${guide.slug}/`);
   }, [guide, lang]);
 

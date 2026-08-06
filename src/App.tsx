@@ -112,7 +112,7 @@ function AppShell({ pathname, navigatePath }: AppShellProps) {
         <SoftwareAppJsonLd
           name={t('app.jsonLdName')}
           description={t('app.jsonLdDescription')}
-          url={`https://efatura-xml-converter.calderon-hs91.workers.dev${pathname}`}
+          url={`https://schemaflowapp.com${pathname}`}
         />
       )}
 

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://efatura-xml-converter.calderon-hs91.workers.dev/sitemap.xml
+Sitemap: https://schemaflowapp.com/sitemap.xml

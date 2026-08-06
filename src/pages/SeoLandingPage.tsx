@@ -41,7 +41,7 @@ export const SeoLandingPage: React.FC<SeoLandingPageProps> = ({
     const currentOrigin =
       typeof window !== 'undefined'
         ? window.location.origin
-        : 'https://efatura-xml-converter.calderon-hs91.workers.dev';
+        : 'https://schemaflowapp.com';
     canonicalEl.setAttribute('href', `${currentOrigin}/${pageConfig.slug}/`);
   }, [pageConfig, lang]);
 

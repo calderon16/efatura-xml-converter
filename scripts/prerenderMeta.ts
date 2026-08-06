@@ -7,7 +7,7 @@ import type { LocalizedString } from '../src/types/i18nContent';
 
 type Lang = 'en' | 'tr';
 
-const BASE_URL = 'https://efatura-xml-converter.calderon-hs91.workers.dev';
+const BASE_URL = 'https://schemaflowapp.com';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const distDir = path.join(__dirname, '..', 'dist');
