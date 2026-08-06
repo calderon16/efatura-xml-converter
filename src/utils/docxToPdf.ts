@@ -32,6 +32,12 @@ export async function convertDocxToPdf(file: File, fileName: string): Promise<vo
   iframe.style.width = '800px';
   iframe.style.height = '1200px';
   iframe.style.border = 'none';
+  // Defense-in-depth: mammoth's HTML output is derived from the user's own uploaded .docx and
+  // shouldn't contain executable script, but this iframe never needs to run any JS of its own
+  // (it exists purely for html2canvas to screenshot). "allow-same-origin" without "allow-scripts"
+  // keeps parent<->iframe DOM access working (needed for doc.write()/html2canvas(doc.body)) while
+  // making script execution, form submission, and popups impossible inside it.
+  iframe.setAttribute('sandbox', 'allow-same-origin');
   document.body.appendChild(iframe);
 
   let blob: Blob;
