@@ -34,7 +34,6 @@ workflows:
     environment:
       node: 22.12.0
       xcode: latest
-      cocoapods: default
     scripts:
       - name: Install dependencies
         script: |
@@ -47,10 +46,9 @@ workflows:
       - name: Sync Capacitor native projects
         script: |
           npx cap sync ios
-      - name: Build iOS Xcode workspace
+      - name: Build iOS Xcode project
         script: |
           cd ios/App
-          pod install
-          xcodebuild -workspace App.xcworkspace -scheme App -configuration Release -archivePath build/App.xcarchive archive
+          xcodebuild -project App.xcodeproj -scheme App -configuration Release -archivePath build/App.xcarchive archive
     artifacts:
       - ios/App/build/*.xcarchive
